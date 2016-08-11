@@ -179,6 +179,7 @@ class ProductController extends Controller
             'categories' => 'required',
             'thumbnail' => 'image',
         ]);
+        
         if ($request->hasFile('album')) {
             foreach ($request->album as $photo) {
                 if ($photo && strpos($photo->getMimeType(), 'image') === false) {

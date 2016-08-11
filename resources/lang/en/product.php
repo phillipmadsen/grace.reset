@@ -76,4 +76,13 @@ return [
 'productoptions' => 'Product Options',
 'product_option_name' => 'Option Name',
 'product_option_value' => 'Option Value',
+'product_option_value' => 'Option Value',
+'product_option_value' => 'Option Value',
+'features' => 'Product Features',
+'published' => 'Published:',
+'ispromo' => 'Active Promo:',
+'published' => 'Published',
+'umpublished' => 'UnPublished',
+'active' => 'Active',
+'notactive' => 'NotActive',
 ];

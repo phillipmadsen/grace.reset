@@ -100,7 +100,7 @@
                         </div>
                         <div class="col-md-2">
                         <label class="control-label"> Form Post / Send Email </label>
-                        <label> <input type="checkbox" value="1" name="permissions[admin.form-post.index]"data-toggle="toggle"data-on="Allowed"data-off="Not Allowed"data-onstyle="success"data-offstyle="danger">  </label>
+                        <label> <input type="checkbox" value="1" name="permissions[admin.form-post.index]" data-toggle="toggle"data-on="Allowed"data-off="Not Allowed"data-onstyle="success"data-offstyle="danger">  </label>
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,8 @@
 
 
-
+ 
 <div class="form-group">
-    {!! Form::label('features', trans('product.features'), array('class' => 'control-label')) !!}
+    {!! Form::label('features', trans('product.features'), ['class' => 'control-label']) !!}
     <div class="panel-content">
 
         <table class="table">

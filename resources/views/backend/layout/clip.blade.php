@@ -49,10 +49,18 @@
         <!-- end: MAIN CSS -->
         <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 <script src="{!! asset('/clip/assets/plugins/jQuery-lib/2.0.3/jquery.min.js') !!}"></script>
+
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
         <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     <link rel="shortcut icon" href="{!! asset('/clip/favicon.ico') !!}" />
 
 @yield('topscripts')
+
+<script type="text/javascript">
+    // $(document).ready(function() {
+      
+    // });
+</script>
 
     </head>
 <body>
@@ -177,7 +185,7 @@
         <script src="{!! asset('/clip/assets/plugins/less/less-1.5.0.min.js') !!}"></script>
         <script src="{!! asset('/clip/assets/plugins/jquery-cookie/jquery.cookie.js') !!}"></script>
         <script src="{!! asset('/clip/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js') !!}"></script>
-        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+        
         <script src="{!! asset('/clip/assets/plugins/nestable/jquery.nestable.js') !!}"></script>
         <script src="{!! asset('/clip/assets/js/ui-nestable.js') !!}"></script>
         <script src="{!! asset('/clip/assets/js/main.js') !!}"></script>

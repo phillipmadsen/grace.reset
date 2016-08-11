@@ -25,10 +25,10 @@ use \Illuminate\Database\Eloquent\Collection;
 
 class EcomController extends Controller
 {
-    public function __construct( )
+    public function __construct()
     {
 
-        // $this->middleware('isAdmin');
+       //$this->middleware('sentinel.permission');
     }
 
     //Admin Dashboard

@@ -47,10 +47,10 @@
 <div class="space12">
     <div class="btn-group btn-group-lg">
         <a class="btn btn-default active" href="javascript:;">
-            Articles
+            Products
         </a>
         <a class="btn btn-default hidden-xs" href="{!!  route('admin.product.create') !!}">
-         <i class="fa fa-plus"></i>   Add Article
+         <i class="red fa fa-plus"></i> Add Product
         </a>
 {{--         <a target="_blank" class="btn btn-default" href="">
             Add Category
@@ -74,9 +74,9 @@ right here
     @endif
 @endif
 
-@if($admin->hasAccess('admin'))
+{{-- @if($admin->hasAccess('admin'))
           <h1>admin access</h1>
-@endif
+@endif --}}
 
 <table class="table">
 	<tr id="table-header">
@@ -129,6 +129,7 @@ right here
 @section('bottomscripts')
 	<script>
 	$(document).ready(function(){
+        $('.summernote').summernote();
 		$('.sidebar #products').addClass('active-section');
 	});
 	</script>

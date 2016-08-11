@@ -16,7 +16,7 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (!Sentinel::getUser()->inRole('Admin'))
+        if (!Sentinel::getUser()->inRole('admin'))
         {
             if ($request->ajax())
             {

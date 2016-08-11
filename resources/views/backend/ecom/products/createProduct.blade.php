@@ -45,7 +45,7 @@
   <div class="tabbable">
   <h3>TAB SELECTION:</h3>
     <ul id="myTab4" class="nav nav-tabs tab-padding tab-space-3 tab-blue">
-        <li class="active"> <a data-toggle="tab" href="#panel_tab_overview"> OVERVIEW </a> </li>
+        <li class="active"> <a data-toggle="tab" href="#panel_tab_overview"><i class="pink fa fa-dashboard"></i> OVERVIEW </a> </li>
         <li class=""> <a data-toggle="tab" href="#panel_tab_image"> IMAGES &amp; FILES </a> </li>
         <li class=""> <a data-toggle="tab" href="#panel_tab_pricing"> PRICING / TAX / SHIPPING </a> </li>
         <li class=""> <a data-toggle="tab" href="#panel_tab_meta"> META / SEO </a> </li>
