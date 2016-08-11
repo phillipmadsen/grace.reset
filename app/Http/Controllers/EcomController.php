@@ -28,7 +28,7 @@ class EcomController extends Controller
     public function __construct()
     {
 
-       //$this->middleware('sentinel.permission');
+       $this->middleware('sentinel.permission');
     }
 
     //Admin Dashboard

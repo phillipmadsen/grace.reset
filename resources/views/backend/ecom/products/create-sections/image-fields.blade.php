@@ -70,6 +70,7 @@
                 <td class="text-center">
                     <a href="#" class="delete-img btn btn-sm btn-default m-t-10"><i class="fa fa-times-circle"></i> Remove</a>
                 </td>
+                <div id="add_album_image">Add Image</div>
             </tr>
 
         </tbody>

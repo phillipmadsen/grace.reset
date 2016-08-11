@@ -82,7 +82,7 @@ return [
 'published' => 'Published:',
 'ispromo' => 'Active Promo:',
 'published' => 'Published',
-'umpublished' => 'UnPublished',
+'unpublished' => 'UnPublished',
 'active' => 'Active',
 'notactive' => 'NotActive',
 ];

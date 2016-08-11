@@ -39,11 +39,12 @@
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
         </div>
 
+        <!-- Is Published Field -->
         <div class=" col-md-2">
             {!! Form::label('ispromo', trans('product.ispromo'), ['class' => 'control-label']) !!} <br>
 
             <label class="checkbox">
-            {!! Form::checkbox('ispromo', 1, null,['class' => 'icheckbox_square', 'data-toggle' =>'toggle', 'data-on' => trans('active'), 'data-off' => trans('notactive'), 'data-onstyle' => 'success', 'data-offstyle' => 'danger']) !!}
+            {!! Form::checkbox('ispromo', 1, null,['class' => 'icheckbox_square', 'data-toggle' =>'toggle', 'data-on' => trans('product.active'), 'data-off' => trans('product.notactive'), 'data-onstyle' => 'success', 'data-offstyle' => 'danger']) !!}
             </label>
         </div>
 
@@ -52,7 +53,7 @@
             {!! Form::label('is_published', trans('product.published'), ['class' => 'control-label']) !!} <br>
 
             <label class="checkbox">
-            {!! Form::checkbox('is_published', 1, null,['class' => 'icheckbox_square', 'data-toggle' =>'toggle', 'data-on' => trans('published'), 'data-off' => trans('umpublished'), 'data-onstyle' => 'success', 'data-offstyle' => 'danger']) !!}
+            {!! Form::checkbox('is_published', 1, null,['class' => 'icheckbox_square', 'data-toggle' =>'toggle', 'data-on' => trans('product.published'), 'data-off' => trans('product.unpublished'), 'data-onstyle' => 'success', 'data-offstyle' => 'danger']) !!}
             </label>
         </div>
  
@@ -108,15 +109,15 @@
 
 
         <!-- Description Field -->
-        <div class="form-group col-sm-12 col-lg-12">
+        <div class="form-group col-md-12 col-lg-12">
             {!! Form::label('description', 'Description:') !!}
-            {!! Form::textarea('details', null, ['class' => 'form-control', 'rows' => '5']) !!}
+            {!! Form::textarea('details', null, ['class' => 'form-control summernote', 'rows' => '5']) !!}
         </div>
 
     <div class="row">
-        <div class="form-group col-md-7">
+        <div class="form-group col-md-12">
             <label for="details">Details : </label>
-            {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '5']) !!}
+            {!! Form::textarea('description', null, ['class' => 'form-control summernote', 'rows' => '5']) !!}
         </div>
     </div>
 

@@ -133,8 +133,8 @@
 	<script src="/ckeditor-basic/ckeditor.js"></script>
 	<script>
 	$(document).ready(function(){
-		CKEDITOR.replace('details');
-        CKEDITOR.replace('description');
+		//CKEDITOR.replace('details');
+        //CKEDITOR.replace('description');
 		var options_counter = 0;
 		$('.sidebar #products').addClass('active-section');
 
