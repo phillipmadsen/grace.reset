@@ -110,25 +110,26 @@
 
         <!-- Description Field -->
         <div class="form-group col-md-12 col-lg-12">
-            {!! Form::label('description', 'Description:') !!}
+            {!! Form::label('description', trans('product.description')) !!}
             {!! Form::textarea('details', null, ['class' => 'form-control summernote', 'rows' => '5']) !!}
         </div>
 
-    <div class="row">
-        <div class="form-group col-md-12">
-            <label for="details">Details : </label>
+  
+        <div class="form-group col-md-12 col-lg-12">
+      
+             {!! Form::label('details', trans('product.details')) !!}
             {!! Form::textarea('description', null, ['class' => 'form-control summernote', 'rows' => '5']) !!}
         </div>
-    </div>
+   
 
         <!-- Video Url Field -->
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-8 col-lg-8">
             {!! Form::label('video_url', 'Video Url:') !!}
             {!! Form::text('video_url', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Slug Field -->
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-4 col-lg-4">
             {!! Form::label('slug', 'Slug:') !!}
             {!! Form::text('slug', null, ['class' => 'form-control']) !!}
         </div>

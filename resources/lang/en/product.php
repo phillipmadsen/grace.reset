@@ -85,4 +85,7 @@ return [
 'unpublished' => 'UnPublished',
 'active' => 'Active',
 'notactive' => 'NotActive',
+'details' => 'Details:',
+'description' => 'Description:',
+'short' => 'Short Description:',
 ];
