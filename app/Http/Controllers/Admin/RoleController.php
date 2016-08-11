@@ -72,7 +72,7 @@ class RoleController extends Controller
         Role::create($formData);
         Flash::message('Role was successfully added');
 
-        return Redirect::action('App\Controllers\Admin\RoleController@index');
+        return Redirect::action('Admin\RoleController@index');
     }
 
     /**

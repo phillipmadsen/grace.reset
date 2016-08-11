@@ -35,9 +35,7 @@
             </tbody>
         </table>
         <a id="AddMoreFeatureBox" href="#">
-            <button class="btn btn-sm btn-primary" type="button"><i
-                        class="fa fa-plus"></i> {{trans('product.add_item')}}
-            </button>
+            <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-plus"></i> {{trans('product.add_item')}} </button>
         </a>
     </div>
 </div>

@@ -43,14 +43,23 @@ class Category extends Model implements ModelInterface, SluggableInterface
         return $this->hasMany('App\Models\Article');
     }
 
-        /**
+    /**
      * Relationship with the product model.
-     *
-     * @author    Andrea Marco Sartori
-     * @return    Illuminate\Database\Eloquent\Relations\HasMany
+     * @return    Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
+
     public function products()
     {
-        return $this->hasMany(Fully\Models\Product::class);
+        return $this->belongsToMany(Product::class, 'category_product');
+    }
+
+    public function subcats()
+    {
+        return $this->hasMany(SubCategory::class);
+    }
+
+    public function section()
+    {
+        return $this->belongsTo( Section::class);
     }
 }

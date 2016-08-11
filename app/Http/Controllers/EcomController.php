@@ -51,6 +51,8 @@ class EcomController extends Controller
         return view('backend.ecom.dashboard', compact('timestamps', 'totals', 'total'));
     }
 
+
+
     //Products Area
 
     public function products(Request $request)
@@ -66,7 +68,6 @@ class EcomController extends Controller
     public function createProduct()
     {
         $categories = Category::all();
-
         return view('backend.ecom.products.createProduct', compact('categories'));
     }
 

@@ -38,13 +38,10 @@
 			</ul>
 		</div>
 	@endif
-	<form action="/product/create" method="post" enctype="multipart/form-data">
+	<form action="{!! route('product.store') !!}" method="post" enctype="multipart/form-data">
 
 
-
-
-
-            <div class="col-lg-12">
+<div class="col-lg-12">
   <div class="tabbable">
   <h3>TAB SELECTION:</h3>
     <ul id="myTab4" class="nav nav-tabs tab-padding tab-space-3 tab-blue">
@@ -82,7 +79,7 @@
         </div>
         <!-- Submit Field -->
         <div class="form-group col-sm-12">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Add Product', ['class' => 'btn btn-primary' ]) !!}
             <a href="{!! url(getLang().'.admin.products.index') !!}" class="btn btn-default">Cancel</a>
         </div>
 
@@ -101,32 +98,33 @@
 
 
 
-	<hr>
-	<div class="row options">
-		<div class="form-group col-md-12">
-			<label for="options">Product Options : </label>
-			<div id="add_product_option">Add Option</div>
-			<div class="options-group row">
-				<div class="option col-md-3" op-index="0">
-					<span class="fa fa-times fa-lg remove-option"></span>
-					<label for="options">Option Name : </label>
-					<input type="text" name="options[0][name]"><br>
-					<div class="add_option_value">+ Add Value</div>
-					<ul class="values">
-						<li><input type="text" name="options[0][values][]"></li>
-					</ul>
-				</div>
-			</div>
+	{{--<hr>--}}
+	{{--<div class="row options">--}}
+		{{--<div class="form-group col-md-12">--}}
+			{{--<label for="options">Product Options : </label>--}}
+			{{--<div id="add_product_option">Add Option</div>--}}
+			{{--<div class="options-group row">--}}
+				{{--<div class="option col-md-3" op-index="0">--}}
+					{{--<span class="fa fa-times fa-lg remove-option"></span>--}}
+					{{--<label for="options">Option Name : </label>--}}
+					{{--<input type="text" name="options[0][name]"><br>--}}
+					{{--<div class="add_option_value">+ Add Value</div>--}}
+					{{--<ul class="values">--}}
+						{{--<li><input type="text" name="options[0][values][]"></li>--}}
+					{{--</ul>--}}
+				{{--</div>--}}
+			{{--</div>--}}
 
-		</div>
-	</div>
-	<div class="row">
-		<div class="form-group col-md-7">
-			<input id="submit" type="submit" class="form-control btn btn-primary prod-submit" value="Add Product">
-		</div>
-	</div>
+		{{--</div>--}}
+	{{--</div>--}}
+	{{--<div class="row">--}}
+		{{--<div class="form-group col-md-7">--}}
+			{{--<input id="submit" type="submit" class="form-control btn btn-primary prod-submit" value="Add Product">--}}
+		{{--</div>--}}
+	{{--</div>--}}
 	<input type="hidden" name="_token" value="{{csrf_token()}}">
-	</form>
+        {!! Form::close() !!}
+        <div class="clearfix"></div>
 </div>
 @stop
 
@@ -136,6 +134,7 @@
 	<script>
 	$(document).ready(function(){
 		CKEDITOR.replace('details');
+        CKEDITOR.replace('description');
 		var options_counter = 0;
 		$('.sidebar #products').addClass('active-section');
 

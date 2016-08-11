@@ -13,6 +13,8 @@ use App\Models\Section;
 use App\Models\Cart;
 use App\Models\Option;
 use App\Models\OptionValue;
+use App\Models\ProductFeature;
+use App\Models\ProductVariant;
 use File;
 use Auth;
 use App;
@@ -24,11 +26,12 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('isAdmin', ['except' => [
-        //     'index',
-        //     'show',
-        //     'search'
-        // ]]);
+        $this->middleware('sentinel.auth', ['except' => [
+             'index',
+             'show',
+             'search'
+         ]]);
+    
     }
 
     public function index()
@@ -133,7 +136,7 @@ class ProductController extends Controller
                 }
             }
         }
-
+        
         if (!empty($request->attribute_name))
             {
                 foreach ($request->attribute_name as $key => $item)

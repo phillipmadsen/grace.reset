@@ -26,7 +26,8 @@ class CreateEcommerceTables extends Migration
             $table->longText('details');
             $table->text('short');
             $table->text('description');
-            $table->string('sku', 5)->nullable();
+            $table->string('model', 12)->nullable();
+            $table->string('sku', 12)->nullable();
             $table->string('upc', 12)->nullable();
             $table->integer('quantity')->unsigned()->default('00');
 

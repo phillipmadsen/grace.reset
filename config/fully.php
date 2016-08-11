@@ -94,5 +94,7 @@ return [
         'setting'  => [],
         'user'     => [],
         'group'    => [],
+        'product'    => [],
+        'order'    => [],
     ]
 ];

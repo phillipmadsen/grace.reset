@@ -30,6 +30,8 @@ class SentinelAuth
             }
         }
 
+
+
         return $next($request);
     }
 }

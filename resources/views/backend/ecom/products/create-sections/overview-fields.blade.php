@@ -1,36 +1,30 @@
 <hr />
 <div class="row">
     <div class="form-group col-md-12">
-             <!-- Office Status Field -->
-        <div class="form-group col-md-4">
-            {!! Form::label('office_status', 'Office Status:') !!}
-            {!! Form::select('office_status', ['Draft' => 'Draft', 'Review' => 'Review', 'inDesign' => 'inDesign', 'inProof' => 'inProof', 'inProcess' => 'inProcess', 'Hidden' => 'Hidden', 'Deleted' => 'Deleted', 'Online' => 'Online', 'Offline' => 'Offline', 'Removed' => 'Removed', 'Archived' => 'Archived'], null, ['class' => 'form-control']) !!}
-        </div>
-        <!-- Category Field -->
-        <div class="form-group col-md-4">
-            {!! Form::label('category', 'Category:') !!}
-            <select class="form-control" name="categories[]" id="categories">
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->title }}</option>
-                @endforeach
-            </select>
-        </div>
+
+
         <!-- Status Field -->
-        <div class="form-group col-sm-4">
+        <div class="form-group col-sm-3">
             {!! Form::label('status', 'Status:') !!}
-            {!! Form::select('status', ['Available' => 'Available', 'OnHold' => 'OnHold', 'Online' => 'Online', 'Offline' => 'Offline', 'Removed' => 'Removed', 'Archived' => 'Archived', 'OnBackorder' => 'OnBackorder', 'SoldOut' => 'SoldOut', 'Discontinued' => 'Discontinued'], null, ['class' => 'form-control']) !!}
+            {!! Form::select('status', [ 'online' => 'Online', 'offline' => 'Offline', 'Removed' => 'Removed', 'Archived' => 'Archived', 'Discontinued' => 'Discontinued'], null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Manufacturer Field -->
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
             {!! Form::label('manufacturer', 'Manufacturer:') !!}
             {!! Form::select('manufacturer', ['The Grace Company' => 'The Grace Company'], null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Status Field -->
-        <div class="form-group col-md-4">
-            {!! Form::label('status', 'Status:') !!}
-            {!! Form::select('status', ['InStock' => 'InStock', 'Available' => 'Available', 'OnHold' => 'OnHold', 'OnBackorder' => 'OnBackorder', 'PreOrders' => 'PreOrders', 'PromoActive' => 'PromoActive', 'SoldOut' => 'SoldOut', 'Discontinued' => 'Discontinued'], null, ['class' => 'form-control']) !!}
+        <div class="form-group col-md-3">
+            {!! Form::label('availability', 'Availability:') !!}
+            {!! Form::select('status', ['available' => 'Available', 'InStock' => 'InStock',  'OnHold' => 'OnHold', 'OnBackorder' => 'OnBackorder', 'PreOrders' => 'PreOrders', 'PromoActive' => 'PromoActive', 'SoldOut' => 'SoldOut', 'Discontinued' => 'Discontinued'], null, ['class' => 'form-control']) !!}
+        </div>
+
+        <!-- Office Status Field -->
+        <div class="form-group col-md-3">
+            {!! Form::label('office_status', 'InOffice Status:') !!}
+            {!! Form::select('office_status', ['Draft' => 'Draft', 'Review' => 'Review', 'inDesign' => 'inDesign', 'inProof' => 'inProof', 'inProcess' => 'inProcess', 'Hidden' => 'Hidden', 'Deleted' => 'Deleted', 'Online' => 'Online', 'Offline' => 'Offline', 'Removed' => 'Removed', 'Archived' => 'Archived'], null, ['class' => 'form-control']) !!}
         </div>
     </div>
 </div>
@@ -44,6 +38,7 @@
             {!! Form::label('name', 'Product Name:') !!}
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
         </div>
+
         <!-- Is Published Field -->
         <div class="form-group col-sm-2">
             {!! Form::label('is_published', 'Is Published:') !!}
@@ -53,9 +48,19 @@
         </div>
 
         <!-- Subtitle Field -->
-        <div class="form-group col-sm-8">
+        <div class="form-group col-sm-6">
             {!! Form::label('subtitle', 'Subtitle:') !!}
             {!! Form::text('subtitle', null, ['class' => 'form-control']) !!}
+        </div>
+
+        <!-- Category Field -->
+        <div class="form-group col-md-2">
+            {!! Form::label('category', 'Category:') !!}
+            <select class="form-control" name="categories[]" id="categories">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                @endforeach
+            </select>
         </div>
 
         <!-- Ispromo Field -->
@@ -99,13 +104,13 @@
         <!-- Description Field -->
         <div class="form-group col-sm-12 col-lg-12">
             {!! Form::label('description', 'Description:') !!}
-            {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '5']) !!}
+            {!! Form::textarea('details', null, ['class' => 'form-control', 'rows' => '5']) !!}
         </div>
 
     <div class="row">
         <div class="form-group col-md-7">
             <label for="details">Details : </label>
-            <textarea name="details" id="details" cols="30" rows="10" class="form-control"></textarea>
+            {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '5']) !!}
         </div>
     </div>
 

@@ -11,7 +11,7 @@ class helperFunctions
 	public static function getPageInfo(&$sections,&$cart,&$total)
     {
         $sections = Section::all();
-        if (Auth::user()) {
+        if (Sentinel::check()) {
             $cart = Auth::user()->cart;
         } else {
             $cart = new Collection;

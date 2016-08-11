@@ -15,11 +15,15 @@ class Product extends Model implements SluggableInterface
      * @var string
      */
     protected $table = 'products';
+    protected $guarded = ['id'];
 
     /**
      * @var array
      */
-    protected $fillable = ['id', 'slug', 'ispromo', 'is_published', 'name', 'price', 'details', 'short', 'description', 'sku', 'upc', 'status', 'thumbnail', 'photo_album', 'pubished_at', 'video_url', 'lang', 'manufacturer', 'category_id', 'quantity', 'subtitle', 'meta_title', 'meta_description', 'facebook_title', 'google_plus_title', 'twitter_title', 'office_status', 'availability'];
+    protected $fillable = ['id', 'slug', 'ispromo', 'is_published', 'name', 'price', 'details', 'short',
+        'description', 'sku', 'upc', 'status', 'thumbnail', 'photo_album', 'pubished_at', 'video_url', 'lang',
+        'manufacturer', 'category_id', 'quantity', 'subtitle', 'meta_title', 'meta_description', 'facebook_title',
+        'google_plus_title', 'twitter_title', 'office_status', 'availability'];
 
     /**
      * @var array
@@ -71,19 +75,12 @@ class Product extends Model implements SluggableInterface
     ];
 
 
-     public function category()
-     {
-         $categories = $this->hasOne(App\Models\Category::class, 'id', 'category_id') ->select(['id', 'title']);
-
-         return $categories;
-     }
-
     /**
      * @return mixed
      */
     public function categories()
     {
-        return $this->belongsToMany('App\Models\Category', 'category_product');
+        return $this->belongsToMany(Category::class, 'category_product');
     }
 
     /**
@@ -91,7 +88,7 @@ class Product extends Model implements SluggableInterface
      */
     public function orders()
     {
-        return $this->belongsToMany(App\Models\Order::class);
+        return $this->belongsToMany(Order::class);
     }
 
     /**
@@ -99,7 +96,7 @@ class Product extends Model implements SluggableInterface
      */
     public function carts()
     {
-        return $this->belongsToMany(App\Models\Cart::class);
+        return $this->belongsToMany(Cart::class);
     }
 
     /**
@@ -107,7 +104,7 @@ class Product extends Model implements SluggableInterface
      */
     public function photos()
     {
-        return $this->hasMany(App\Models\AlbumPhoto::class);
+        return $this->hasMany(AlbumPhoto::class);
     }
 
     /**
@@ -115,7 +112,7 @@ class Product extends Model implements SluggableInterface
      */
     public function options()
     {
-        return $this->hasMany(App\Models\Option::class);
+        return $this->hasMany(Option::class);
     }
 
     /**
@@ -123,7 +120,7 @@ class Product extends Model implements SluggableInterface
      */
     public function productVariants()
     {
-        return $this->hasMany(App\Models\ProductVariant::class);
+        return $this->hasMany(ProductVariant::class);
     }
 
     /**
@@ -131,16 +128,16 @@ class Product extends Model implements SluggableInterface
      */
     public function productFeatures()
     {
-        return $this->hasMany(App\Models\ProductVariant::class);
+        return $this->hasMany(ProductFeature::class);
     }
-
-        public function variants()
+    
+    public function variants()
     {
-        return $this->hasMany(App\Models\ProductVariant::class);
+        return $this->hasMany(ProductVariant::class);
     }
 
     public function features()
     {
-        return $this->hasMany(App\Models\ProductFeature::class);
+        return $this->hasMany(ProductFeature::class);
     }
 }

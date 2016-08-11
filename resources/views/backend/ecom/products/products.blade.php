@@ -58,9 +58,25 @@
 
     </div>
 </div>
+right here
+@if(!Sentinel::guest())
+    @if(Sentinel::inRole('superadmin'))
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="logout">super admin logout</a></li>
+        </ul>
+    @endif
+@endif
+@if(!Sentinel::guest())
+    @if(Sentinel::inRole('admin'))
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="logout">admin logout</a></li>
+        </ul>
+    @endif
+@endif
 
-
-
+@if($admin->hasAccess('admin'))
+          <h1>admin access</h1>
+@endif
 
 <table class="table">
 	<tr id="table-header">

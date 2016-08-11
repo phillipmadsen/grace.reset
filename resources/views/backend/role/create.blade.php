@@ -43,6 +43,8 @@
             </div>
             <div class="panel-body">
      {!! Form::open(array('action' => '\App\Http\Controllers\Admin\RoleController@store')) !!}
+
+
         <div class="space12">
             <div class="btn-group btn-group-lg">
                 <a class="btn btn-default active" href="javascript:;">Roles </a>
@@ -135,10 +137,10 @@
                                 <td><input class="icheckbox_square-grey checked" type="checkbox" value="1" checked name="permissions[admin.{!! $module !!}.index]"></td>
                                 <td><input class="icheckbox_square-grey checked" type="checkbox" value="1" checked name="permissions[admin.{!! $module !!}.view]"></td>
                                 <td><input class="icheckbox_square-grey checked" type="checkbox" value="1" checked name="permissions[admin.{!! $module !!}.create]"></td>
-                                <td><input type="checkbox" value="1"  name="permissions[admin.{!! $module !!}.store]"  class="icheckbox_square-grey checked"></td>
-                                <td><input type="checkbox" value="1" name="permissions[admin.{!! $module !!}.edit]"  class="icheckbox_square-grey checked"></td>
-                                <td><input type="checkbox" value="1" name="permissions[admin.{!! $module !!}.update]"  class="icheckbox_square-grey checked"></td>
-                                <td><input type="checkbox" value="1" name="permissionsadmin.[{!! $module !!}.destroy]"  class="icheckbox_square-grey"></td>
+                                <td><input class="icheckbox_square-grey checked" type="checkbox" value="1"  name="permissions[admin.{!! $module !!}.store]"></td>
+                                <td><input class="icheckbox_square-grey checked" type="checkbox" value="1" name="permissions[admin.{!! $module !!}.edit]"></td>
+                                <td><input class="icheckbox_square-grey checked" type="checkbox" value="1" name="permissions[admin.{!! $module !!}.update]"></td>
+                                <td><input class="icheckbox_square-grey" type="checkbox" value="1" name="permissionsadmin.[{!! $module !!}.destroy]"></td>
                             </tr>
                             @endforeach
                             </tbody>
