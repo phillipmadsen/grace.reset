@@ -8,11 +8,14 @@
     </div>
     <div class="row">
         <div class="form-group col-md-7">
-
+{{-- <div class="fileupload-new thumbnail" style="width: 300px; height: 300px;">
+<img src="http://www.placehold.it/300x300/EFEFEF/AAAAAA?text=no+image" alt="">
+</div> --}}
             <label for="album">Photo Album : </label>
             <input id="album" type="file" name="album[]" class="form-control">
             <div class="album"></div>
-            <div id="add_album_image">Add Image</div>
+           
+            <div id="add_album_image" class="btn btn-light-grey"><i class="fa fa-picture-o"></i> Select image</div>
 
         </div>
     </div>
