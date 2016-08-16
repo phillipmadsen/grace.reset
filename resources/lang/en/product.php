@@ -65,10 +65,7 @@ return [
 'list_item_6' => 'List Item 6',
 'image' => 'Image',
 'image_1' => 'Image 1',
-'image_2' => 'Image 2',
-'image_3' => 'Image 3',
-'image_4' => 'Image 4',
-'image_5' => 'Image 5',
+
 'description_for_quote' => 'Description For Quote',
 'pubished_at' => 'Pubished At',
 'feature_name' => 'Feature',
@@ -76,4 +73,21 @@ return [
 'productoptions' => 'Product Options',
 'product_option_name' => 'Option Name',
 'product_option_value' => 'Option Value',
+    'features' => 'Product Features',
+    'published' => 'Published:',
+    'ispromo' => 'Active Promo:',
+    'published' => 'Published',
+    'unpublished' => 'UnPublished',
+    'active' => 'Active',
+    'notactive' => 'NotActive',
+    'details' => 'Details:',
+    'description' => 'Description:',
+    'short' => 'Short Description:',
+
+
+'primary-photo' => 'Primary Photo Upload',
+    'additional-images' => 'Additional Photos:',
+'image_3' => 'Image 3',
+'image_4' => 'Image 4',
+'image_5' => 'Image 5',
 ];

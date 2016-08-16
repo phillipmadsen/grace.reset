@@ -20,20 +20,35 @@
 
         <!-- end: META -->
         <!-- start: MAIN CSS -->
-        <link rel ="stylesheet" href="{!! asset('/clip/assets/plugins/bootstrap/css/bootstrap.min.css') !!}">
-        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Raleway:400,100,200,300,500,600,700,800,900/" />
 
-        <link rel="stylesheet" href="{!! asset('/clip/assets/plugins/font-awesome/css/font-awesome.min.css') !!}">
+        <link type="text/css" rel="stylesheet" href="/clip/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="/clip/bower_components/font-awesome/css/font-awesome.min.css" />
+        <link href="/clip/assets/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="/clip/assets/fonts/clip-font.min.css" />
+        <link type="text/css" rel="stylesheet" href="/clip/bower_components/iCheck/skins/all.css" />
+
+        <link type="text/css" rel="stylesheet" href="/clip/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" />
+        <link type="text/css" rel="stylesheet" href="/clip/bower_components/sweetalert/dist/sweetalert.css" />
+        <link type="text/css" rel="stylesheet" href="/clip/assets/css/main.min.css" />
+        <link type="text/css" rel="stylesheet" href=/clip/assets/css/main-responsive.min.css" />
+        <link type="text/css" rel="stylesheet" media="print" href="/clip/assets/css/print.min.css" />
+        <link type="text/css" rel="stylesheet" id="skin_color" href="/clip/assets/css/theme/light.min.css" />
+
         <link rel="stylesheet" href="{!! asset('/clip/assets/fonts/style.css') !!}">
         <link rel="stylesheet" href="{!! asset('/clip/assets/css/main.css') !!}">
         <link rel="stylesheet" href="{!! asset('/clip/assets/css/main-responsive.css') !!}">
-        <link rel="stylesheet" href="{!! asset('/clip/assets/plugins/iCheck/skins/all.css') !!}">
-        <link rel="stylesheet" href="{!! asset('/clip/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css') !!}">
-        <link rel="stylesheet" href="{!! asset('/clip/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css') !!}">
+
+
+
         <link rel="stylesheet" href="{!! asset('/clip/assets/css/theme_light.css') !!}" type="text/css" id="skin_color">
         <link rel="stylesheet" href="{!! asset('/clip/assets/css/print.css') !!}" type="text/css" media="print"/>
 
         <link rel="stylesheet" href="{!! asset('/clip/assets/css/important.css') !!}">
+
+
+
+
 
 
         <style>
@@ -83,7 +98,7 @@
                         <ul class="dropdown-menu">
                             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                 <li>
-                                    <a href="{{LaravelLocalization::getLocalizedURL($localeCode) }}" hreflang="{{$localeCode}}">
+                                    <a href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}" hreflang="{{$localeCode}}">
                                         <img alt="" src="/flags/{{$localeCode}}.png">&nbsp; &nbsp;{{{ $properties['native'] }}} </a>
 
                                 </li>
@@ -167,17 +182,23 @@
         <!--[if gte IE 9]><!-->
         {{-- <script src="{!! asset('/clip/assets/plugins/jQuery-lib/2.0.3/jquery.min.js') !!}"></script> --}}
         <!--<![endif]-->
-        <script src="{!! asset('/clip/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/bootstrap/js/bootstrap.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/blockUI/jquery.blockUI.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/iCheck/jquery.icheck.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js') !!}"></script>
+
+
+
+    <script type="text/javascript" src="/clip/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/clip/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/clip/bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+    <script type="text/javascript" src="/clip/bower_components/blockUI/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="/clip/bower_components/iCheck/icheck.min.js"></script>
+    <script type="text/javascript" src="/clip/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js"></script>
+    <script type="text/javascript" src="/clip/bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/clip/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/clip/assets/js/bootstrap-toggle.min.js"></script>
+
         <script src="{!! asset('/clip/assets/plugins/less/less-1.5.0.min.js') !!}"></script>
         <script src="{!! asset('/clip/assets/plugins/jquery-cookie/jquery.cookie.js') !!}"></script>
         <script src="{!! asset('/clip/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js') !!}"></script>
-        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
         <script src="{!! asset('/clip/assets/plugins/nestable/jquery.nestable.js') !!}"></script>
         <script src="{!! asset('/clip/assets/js/ui-nestable.js') !!}"></script>
         <script src="{!! asset('/clip/assets/js/main.js') !!}"></script>
@@ -187,23 +208,12 @@
 
 @endif
 
-        <script src="{!! asset('/clip/assets/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/autosize/jquery.autosize.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/select2/select2.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/jquery-maskmoney/jquery.maskMoney.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/bootstrap-daterangepicker/moment.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/bootstrap-daterangepicker/daterangepicker.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/bootstrap-colorpicker/js/commits.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/summernote/build/summernote.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/ckeditor/ckeditor.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/ckeditor/adapters/jquery.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/js/form-elements.js') !!}"></script>
+
+
+
+
+
+
 @yield('bottomscripts')
         <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>

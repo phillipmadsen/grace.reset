@@ -59,7 +59,7 @@ Route::group(['prefix' => LaravelLocalization::getCurrentLocale(), 'before' => [
      */
     // Route::get('/', 'ProductController@index');
 
-
+    Route::get('shop', [ 'as' => 'shop', 'uses' =>'ProductController@index']);
     Route::get('/product/{id}-{slug}/show', [ 'as' => '', 'uses' =>'ProductController@show']);
     Route::get('/product/{id}/photo/{photo_id}/delete',[ 'as' => '', 'uses' => 'ProductController@deletePhoto']);
     Route::get('/option/{id}/delete', [ 'as' => '', 'uses' => 'ProductController@deleteOption']);

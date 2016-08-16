@@ -156,6 +156,7 @@ class CreateEcommerceTables extends Migration
             $table->increments('id');
             $table->unsignedInteger('product_id');
             $table->string('photo_src');
+            $table->string('alt');
             $table->timestamps();
             $table->engine = 'InnoDB';
 

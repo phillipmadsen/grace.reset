@@ -1,26 +1,32 @@
+/*	Google fonts */
+/*	Fonts */
+/*	Colors */
+/* THEME: light */
+/* THEME: dark */
+/* THEME: black and white */
+/* THEME: green */
+/* THEME: navy */
 .navbar {
-	display: none;
-}
-.main-navigation{
-	display: none;
-}
+  display: none; }
+
+.main-navigation {
+  display: none; }
+
 .hidden-print {
-	display: none;
-}
+  display: none; }
+
 .breadcrumb {
-	display: none;
-}
+  display: none; }
+
 .page-header {
-	display: none;
-}
+  display: none; }
+
 .footer {
-	display: none;
-}
+  display: none; }
+
 .main-container {
-	margin: 0 !important;
-	padding: 0 !important;
-}
-.main-content .container{
-	min-height: auto !important;
-	border: none !important;
-}
+  margin: 0 !important;
+  padding: 0 !important; }
+  .main-container .container {
+    min-height: auto !important;
+    border: none !important; }

@@ -15,6 +15,8 @@ use App\Models\Option;
 use App\Models\OptionValue;
 use App\Models\ProductFeature;
 use App\Models\ProductVariant;
+use App\Models\OrderProduct;
+
 use File;
 use Auth;
 use App;
@@ -26,18 +28,19 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('sentinel.auth', ['except' => [
-             'index',
-             'show',
-             'search'
-         ]]);
+//        $this->middleware('sentinel.auth', ['except' => [
+//             'index',
+//             'show',
+//             'search'
+//         ]]);
     
     }
 
     public function index()
     {
+
         $new_products = Product::orderBy('created_at', 'desc')->take(12)->get();
-        $get_best_sellers = App\OrderProduct::select('product_id', \DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count', 'desc')->take(8)->get();
+        $get_best_sellers = OrderProduct::select('product_id', \DB::raw('COUNT(product_id) as count'))->groupBy('product_id')->orderBy('count', 'desc')->take(8)->get();
         $best_sellers = [];
         foreach ($get_best_sellers as $product) {
             $best_sellers[] = $product->product;
@@ -83,7 +86,8 @@ class ProductController extends Controller
         /**
     	 * Upload a new thumbnail
     	 */
-        $dest = "content/images/";
+        $dest = "uploads/pruducts/";
+
         $name = str_random(11)."_".$request->file('thumbnail')->getClientOriginalName();
         $request->file('thumbnail')->move($dest, $name);
         $product = $request->all();

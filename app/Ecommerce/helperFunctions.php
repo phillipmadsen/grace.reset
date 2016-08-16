@@ -2,6 +2,7 @@
 
 use App\Models\Section;
 use App\Models\Cart;
+use Sentinel;
 use Auth;
 use Session;
 use \Illuminate\Database\Eloquent\Collection;
@@ -12,7 +13,8 @@ class helperFunctions
     {
         $sections = Section::all();
         if (Sentinel::check()) {
-            $cart = Auth::user()->cart;
+//            $cart = Sentinel::getUser()->getUserId()->cart;
+            $cart = Sentinel::getUser()->cart;
         } else {
             $cart = new Collection;
             if (Session::has('cart')) {

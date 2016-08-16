@@ -11,7 +11,7 @@ class SectionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('isAdmin');
+       // $this->middleware('isAdmin');
     }
 
     public function store(Request $request)
@@ -43,6 +43,6 @@ class SectionController extends Controller
             'flash_message' => 'Section has been Successfully removed',
             'flash-warning' => true
         ]);
-        ;
+
     }
 }
