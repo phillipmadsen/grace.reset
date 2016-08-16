@@ -24,7 +24,7 @@ class CartController extends Controller
 {
     public function __construct()
     {
-        $this->user = $sentinel->getUser();
+        $this->user = Sentinel::getUser()->getUserId();
         $this->middleware('sentinel.auth', ['except' => [
             'index',
             'add',
@@ -192,7 +192,8 @@ class CartController extends Controller
 
     public function payment(Request $request)
     {
-        $userCart = Sentinel::getUser()->cart;
+        $user = Sentinel::getUser()->getUserId();
+        $userCart = $user->cart;
         $total = 0;
         foreach ($userCart as $item) {
             $total += ($item->product->price)*($item->amount);

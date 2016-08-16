@@ -2,14 +2,14 @@
 
 @section('topscripts')
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-    <link href="/clip/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="/clip/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-    <link href="/clip/assets/plugin/bootstrap-timepicker.min.css" rel="stylesheet" />
-    <link href="/clip/bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
-    <link href="/clip/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
-    <link href="/clip/bower_components/jquery.tagsinput/dist/jquery.tagsinput.min.css" rel="stylesheet" />
-    <link href="/clip/bower_components/summernote/dist/summernote.css" rel="stylesheet" />
-    <link href="/clip/bower_components/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
+    <link href="{!! asset('/clip/bower_components/select2/dist/css/select2.min.css') !!}" rel="stylesheet" />
+    <link href="{!! asset('/clip/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') !!}" rel="stylesheet" />
+    <link href="{!! asset('/clip/assets/plugin/bootstrap-timepicker.min.css') !!}" rel="stylesheet" />
+    <link href="{!! asset('/clip/bower_components/bootstrap-daterangepicker/daterangepicker.css') !!}" rel="stylesheet" />
+    <link href="{!! asset('/clip/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') !!}" rel="stylesheet" />
+    <link href="{!! asset('/clip/bower_components/jquery.tagsinput/dist/jquery.tagsinput.min.css') !!}" rel="stylesheet" />
+    <link href="{!! asset('/clip/bower_components/summernote/dist/summernote.css') !!}" rel="stylesheet" />
+    <link href="{!! asset('/clip/bower_components/bootstrap-fileinput/css/fileinput.min.css') !!}" rel="stylesheet" />
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 @endsection
 
@@ -92,8 +92,7 @@
 
 
 
-
-
+<div class="line"></div>
 
 
 
@@ -128,80 +127,63 @@
         {!! Form::close() !!}
         <div class="clearfix"></div>
 </div>
-@stop
+        @endsection
 
 @section('bottomscripts')
-        <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+        <script src="{!! asset('/clip/bower_components/moment/min/moment.min.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/bootstrap-maxlength/src/bootstrap-maxlength.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/autosize/dist/autosize.min.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/select2/dist/js/select2.min.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/jquery.maskedinput/dist/jquery.maskedinput.min.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/jquery-maskmoney/dist/jquery.maskMoney.min.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/bootstrap-daterangepicker/daterangepicker.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/jquery.tagsinput/src/jquery.tagsinput.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/summernote/dist/summernote.min.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/ckeditor/ckeditor.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/ckeditor/adapters/jquery.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js') !!}"></script>
+        <script src="{!! asset('/clip/bower_components/bootstrap-fileinput/js/fileinput.js') !!}"></script>
 
 
-
-
-        <script src="/clip/bower_components/moment/min/moment.min.js"></script>
-        <script src="/clip/bower_components/bootstrap-maxlength/src/bootstrap-maxlength.js"></script>
-        <script src="/clip/bower_components/autosize/dist/autosize.min.js"></script>
-        <script src="/clip/bower_components/select2/dist/js/select2.min.js"></script>
-        <script src="/clip/bower_components/jquery.maskedinput/dist/jquery.maskedinput.min.js"></script>
-        <script src="/clip/bower_components/jquery-maskmoney/dist/jquery.maskMoney.min.js"></script>
-        <script src="/clip/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <script src="/clip/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <script src="/clip/bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-        <script src="/clip/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-        <script src="/clip/bower_components/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-        <script src="/clip/bower_components/summernote/dist/summernote.min.js"></script>
-        <script src="/clip/bower_components/ckeditor/ckeditor.js"></script>
-        <script src="/clip/bower_components/ckeditor/adapters/jquery.js"></script>
-        <script src="/clip/bower_components/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js"></script>
-        <script src="/clip/bower_components/bootstrap-fileinput/js/fileinput.js"></script>
-
-
-
-
-	<script>
-	$(document).ready(function(){
-//		CKEDITOR.replace('details');
-//      CKEDITOR.replace('description');
-		var options_counter = 0;
-		$('.sidebar #products').addClass('active-section');
-
-//		$('#add_album_image').click(function(){
-//			$('.album').append('<input id="album" type="file" name="album[]" class="form-control">');
-//		});
-        $('#add_album_image').click(function(){
-            $('.additional').append('<div class="row "><div class="form-group"><div class="col-md-8"><label for="album">Additional Photos:</label>' +
-                    '<input id="album" type="file" name="album[]" class="file form-control"> </div></div></div>');
+<script>
+    jQuery(document).ready(function() {
+        var options_counter = 0;
+        $('.sidebar #products').addClass('active-section');
+        $('#add_album_image').click(function () {
+        $('.additional').append('<div class="row "><div class="form-group"><div class="col-md-8"><label for="album">Additional Photos:</label>' +
+                    '<input type="file" id="album" name="album[]" class="file form-control input-preview"> </div></div></div>');
+            $(".input-preview").fileinput();
         });
 
-		$('#add_product_option').click(function(){
-			options_counter++;
-			$('.options-group').append('<div class="option col-md-3" op-index="'+options_counter+'">' +
-                    '<span class="fa fa-times fa-lg remove-option"></span>' +
-                    '<label for="options">Option Name:</label><input type="text" name="options['+options_counter+'][name]"><br>' +
-                    '<div class="add_option_value">+ Add Value</div><ul class="values"><li>' +
-                    '<input type="text" name="options['+options_counter+'][values][]"></li></ul></div>');
-		});
-
-		$(document).on("click", ".remove-option", function() {
-			$(this).parent().remove();
-		});
-
-		$(document).on("click", ".add_option_value", function() {
-			$(this).parent().find('.values').append('<li><input type="text" name="options['+$(this).parent().attr('op-index')+'][values][]"><i class="fa fa-minus remove-value"></i></li>');
-		});
-
-		$(document).on("click", ".remove-value", function() {
-			$(this).parent().remove();
-		});
-
-
- 	});
-
-	</script>
 
 
 
+
+        $('#add_product_option').click(function () {
+        options_counter++;
+        $('.options-group').append('<div class="option col-md-3" op-index="' + options_counter + '">' +
+            '<span class="fa fa-times fa-lg remove-option"></span>' +
+            '<label for="options">Option Name:</label><input type="text" name="options[' + options_counter + '][name]"><br>' +
+            '<div class="add_option_value">+ Add Value</div><ul class="values"><li>' +
+                    '<input type="text" name="options[' + options_counter + '][values][]"></li></ul></div>');
+        });
+        $(document).on("click", ".remove-option", function () {
+        $(this).parent().remove();
+        });
+        $(document).on("click", ".add_option_value", function () {
+        $(this).parent().find('.values').append('<li><input type="text" name="options[' + $(this).parent().attr('op-index') + '][values][]"><i class="fa fa-minus remove-value"></i></li>');
+        });
+        $(document).on("click", ".remove-value", function () {
+        $(this).parent().remove();
+        });
+    });
+</script>
 @endsection
 
 @section('clipinline')
-    Main.init();
-    FormElements.init();
+            FormElements.init();
 @endsection

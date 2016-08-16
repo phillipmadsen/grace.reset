@@ -45,8 +45,15 @@
         <!-- Is Published Field -->
         <div class="form-group col-sm-2">
             {!! Form::label('is_published', 'Is Published:') !!}
-            <label class="checkbox-inline">
-            {!! Form::checkbox('is_published', 1, null,['class' => 'icheckbox_square']) !!}
+            <label class="checkbox ">
+                {!! Form::checkbox('is_published', 1, null,['data-toggle' => 'toggle', 'data-on' => 'Published', 'data-off'=>'NotPublished','data-onstyle' => 'success', 'data-offstyle' => 'danger', 'value'=>Input::old('is_published') ]) !!}
+            </label>
+        </div>
+        <!-- Ispromo Field -->
+        <div class="form-group col-sm-2">
+            {!! Form::label('ispromo', 'Is On Promotion:') !!}
+            <label class="checkbox">
+                {!! Form::checkbox('ispromo', 0, null,['data-toggle' => 'toggle', 'data-on' => 'Enabled', 'data-off'=>'Disabled', 'data-onstyle' => 'success', 'data-offstyle' => 'danger', 'value'=>Input::old('ispromo') ]) !!}
             </label>
         </div>
 
@@ -66,13 +73,7 @@
             </select>
         </div>
 
-        <!-- Ispromo Field -->
-        <div class="form-group col-sm-2">
-            {!! Form::label('ispromo', 'Ispromo:') !!}
-            <label class="checkbox-inline">
-            {!! Form::checkbox('ispromo', true, null) !!}
-            </label>
-        </div>
+
     </div>
 </div>
 
@@ -81,11 +82,12 @@
     <div class="col-md-12">
 
         <div class="col-md-8">
-                        <!-- Short Description Field -->
-            <div class="form-group  ">
-                {!! Form::label('short_description', 'Short Description:') !!}
-                {!! Form::textarea('short_description', null, ['class' => 'form-control', 'rows' => '5']) !!}
+            <!-- Description Field -->
+            <div class="form-group">
+                {!! Form::label('details', 'Details:') !!}
+                {!! Form::textarea('details', null, ['class' => 'form-control summernote' ]) !!}
             </div>
+
 
         </div>
         <div class="col-md-4">
@@ -104,17 +106,12 @@
     <div class="col-md-12">
 
 
-        <!-- Description Field -->
+
+
         <div class="form-group col-sm-12 col-lg-12">
+
             {!! Form::label('description', 'Description:') !!}
-            {!! Form::textarea('details', null, ['class' => 'form-control summernote', 'rows' => '5']) !!}
-        </div>
-
-
-        <div class="form-group col-sm-12 col-lg-12">
-
-            {!! Form::label('details', 'Details:') !!}
-            {!! Form::textarea('description', null, ['class' => 'form-control summernote', 'rows' => '5']) !!}
+            {!! Form::textarea('description', null, ['class' => 'form-control summernote' ]) !!}
         </div>
 
 

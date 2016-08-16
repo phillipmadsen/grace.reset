@@ -105,7 +105,7 @@ Route::group(['prefix' => LaravelLocalization::getCurrentLocale()], function () 
         'prefix' => '/admin',
         'middleware' => ['before', 'sentinel.auth', 'sentinel.permission']
             ], function () {
-        
+
     });
 
     Route::group([
@@ -113,7 +113,7 @@ Route::group(['prefix' => LaravelLocalization::getCurrentLocale()], function () 
         'namespace' => 'Admin',
         'middleware' => ['before', 'sentinel.auth', 'sentinel.permission']
             ], function () {
-        
+
         Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'DashboardController@index']);
 
         // user
@@ -281,6 +281,7 @@ Route::group(['prefix' => LaravelLocalization::getCurrentLocale()], function () 
 
         // menu-managment
         Route::resource('menu', 'MenuController');
+         Route::get('menu', ['as' => 'admin.menu', 'uses' => 'MenuController@index']);
         Route::post('menu/save', ['as' => 'admin.menu.save', 'uses' => 'MenuController@save']);
         Route::get('menu/{id}/delete', [
             'as' => 'admin.menu.delete',

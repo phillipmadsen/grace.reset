@@ -53,8 +53,8 @@
 
             </div>
         </div>
- 
- 
+
+
 
 
 
@@ -81,26 +81,26 @@
                         <input type="hidden" value="0" name="permissions[admin.form-post.index]">
                         <div class="col-md-2">
                             <label> View / Edit Dashboard </label>
-                            <label> <input type="checkbox" value="1" name="permissions[admin.dashboard]"  data-toggle="toggle"data-on="Allowed"data-off="Not Allowed"data-onstyle="success"data-offstyle="danger"> </label>
+                            <label> <input type="checkbox" value="1" name="permissions[admin.dashboard]"  data-toggle="toggle" data-on="Allowed" data-off="Not Allowed" data-onstyle="success" data-offstyle="danger"> </label>
                         </div>
 
                         <div class="col-md-2">
                         <label class="control-label"> Settings Index </label>
-                        <label><input type="checkbox" value="1" name="permissions[admin.settings]" data-toggle="toggle"data-on="Allowed"data-off="Not Allowed"data-onstyle="success"data-offstyle="danger"> </label>
+                        <label><input type="checkbox" value="1" name="permissions[admin.settings]" data-toggle="toggle" data-on="Allowed" data-off="Not Allowed" data-onstyle="success" data-offstyle="danger"> </label>
                         </div>
 
                         <div class="col-md-2">
                         <label class="control-label"> Save Settings </label>
-                        <label> <input type="checkbox" value="1" name="permissions[admin.settings.save]" data-toggle="toggle"data-on="Allowed"data-off="Not Allowed"data-onstyle="success"data-offstyle="danger">  </label>
+                        <label> <input type="checkbox" value="1" name="permissions[admin.settings.save]" data-toggle="toggle" data-on="Allowed" data-off="Not Allowed" data-onstyle="success" data-offstyle="danger">  </label>
                         </div>
 
                         <div class="col-md-2">
                         <label class="control-label"> View / Edit Logs </label>
-                        <label> <input type="checkbox" value="1" name="permissions[admin.log]" data-toggle="toggle"data-on="Allowed"data-off="Not Allowed"data-onstyle="success"data-offstyle="danger"></label>
+                        <label> <input type="checkbox" value="1" name="permissions[admin.log]" data-toggle="toggle" data-on="Allowed" data-off="Not Allowed" data-onstyle="success" data-offstyle="danger"></label>
                         </div>
                         <div class="col-md-2">
                         <label class="control-label"> Form Post / Send Email </label>
-                        <label> <input type="checkbox" value="1" name="permissions[admin.form-post.index]"data-toggle="toggle"data-on="Allowed"data-off="Not Allowed"data-onstyle="success"data-offstyle="danger">  </label>
+                        <label> <input type="checkbox" value="1" name="permissions[admin.form-post.index]" data-toggle="toggle" data-on="Allowed" data-off="Not Allowed" data-onstyle="success" data-offstyle="danger">  </label>
                         </div>
                     </div>
                 </div>

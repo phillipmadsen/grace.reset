@@ -46,6 +46,10 @@
     <script>
         $(document).ready(function () {
 
+
+
+
+
             var MaxInputs = 50; //maximum input boxes allowed
             var FeatureInputsWrapper = $("#FeatureInputsWrapper"); //Input boxes wrapper ID
             var AddButton = $("#AddMoreFeatureBox"); //Add button ID
@@ -58,21 +62,21 @@
                 if (x <= MaxInputs) //max input box allowed
                 {
                     FieldCount++; //text box added increment
-                    //add input box
+
                     $(FeatureInputsWrapper).append('<tr>' +
-		                    '<td><input type="text" name="feature_name[]" value="" class="form-control"></td>' +
-		                    '<td><input type="checkbox" name="useicon" checked /></td>' +
-		                    '<td><input type="text" name="icon[]" value="icon-caret-right" class="form-control"></td>' +
-		                    '<td><a href="javascript:void(0)" class="delete removeclass" data-toggle="modal" data-target="#modal-basic"><i class="fa fa-fw fa-times text-danger"></i>' +
-		                    '</a></td>' +
-		                    '</tr>');
+                            '<td><input type="text" name="feature_name[]" value="" class="form-control"></td>' +
+                            '<td><input type="checkbox" name="useicon" checked /></td>' +
+                            '<td><input type="text" name="icon[]" value="icon-caret-right" class="form-control"></td>' +
+                            '<td><a href="javascript:void(0)" class="delete removeclass" data-toggle="modal" data-target="#modal-basic"><i class="fa fa-fw fa-times text-danger"></i>' +
+                            '</a></td>' +
+                            '</tr>');
                     x++; //text box increment
                 }
                 return false;
             });
 
             $("#FeatureInputsWrapper").on("click", ".removeclass", function (e) { //user click on remove text
-                @if(!isset($product))
+                @if (!isset($product))
                 if (x > 1) {
                     $(this).parent().parent().remove(); //remove text box
                     x--; //decrement textbox
@@ -82,7 +86,6 @@
                 x--; //decrement textbox
                 @endif
                         return false;
-            })
-
+            });
         });
     </script>

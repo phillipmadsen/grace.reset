@@ -38,9 +38,6 @@
 
 @section('pagetitle')
 <div class="row">
-
-
-
     <div class="col-sm-12">
         <!-- start: PAGE TITLE & BREADCRUMB -->
         <ol class="breadcrumb">

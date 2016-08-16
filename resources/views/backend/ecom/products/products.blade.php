@@ -101,6 +101,7 @@
         </div>
     </div>
 @endsection
+
 @section('bottomscripts')
     <script>
         $(document).ready(function(){
@@ -108,6 +109,7 @@
         });
     </script>
 @endsection
+
 @section('clipinline')
     TableData.init();
 @endsection

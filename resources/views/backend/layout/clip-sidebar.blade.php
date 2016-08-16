@@ -124,8 +124,47 @@
                         <li> <a href="{{ url(getLang() . '/admin/products/create') }}"><i class="fa fa-plus-square"></i> Add Product</a> </li>
                     </ul>
                 </li>
+                <li class="{{ setActive('admin/products*') }}">
+                    <a href="#"> <i class="fa fa-question"></i> <span> &nbsp;Categories & Sections</span>
+                        <i class="fa fa-angle-left pull-right"></i> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="{{ route('admin.sections') }}"><i class="fa fa-plus-square"></i> Sections</a> </li>
+                        <li><a href="{{ route('admin.categories') }}"><i class="fa fa-question-circle"></i> Categories</a></li>
+
+                    </ul>
+                </li>
             </ul>
         </li>
+
+
+
+        {{--Route::get('users', [ 'as' => '', 'uses' =>'EcomController@users']);--}}
+        {{--Route::get('categories', [ 'as' => 'admin.categories', 'uses' =>'EcomController@categories']);--}}
+        {{--Route::get('sections', [ 'as' => '', 'uses' =>'EcomController@sections']);--}}
+        {{--Route::get('payment', [ 'as' => '', 'uses' =>'EcomController@payment']);--}}
+        {{--Route::post('payment', [ 'as' => '', 'uses' =>'EcomController@paymentConfig']);--}}
+        {{--Route::get('orders', [ 'as' => '', 'uses' =>'EcomController@orders']);--}}
+        {{--Route::get('messages', [ 'as' => '', 'uses' =>'EcomController@messages']);--}}
+        {{--Route::get('pages', [ 'as' => '', 'uses' =>'EcomController@pages']);--}}
+        {{--Route::get('coupons', [ 'as' => '', 'uses' =>'EcomController@coupons']);--}}
+
+
+        {{--Route::get('category/create', [ 'as' => '', 'uses' =>'EcomController@createCategory']);--}}
+        {{--Route::get('category/{id}/edit', [ 'as' => '', 'uses' =>'EcomController@editCategory']);--}}
+        {{--Route::get('user/create', [ 'as' => '', 'uses' =>'EcomController@createUser']);--}}
+        {{--Route::get('user/{id}/edit', [ 'as' => '', 'uses' =>'EcomController@editUser']);--}}
+        {{--Route::get('section/create', [ 'as' => '', 'uses' =>'EcomController@createSection']);--}}
+        {{--Route::get('section/{id}/edit', [ 'as' => '', 'uses' =>'EcomController@editSection']);--}}
+        {{--Route::get('message/{id}', [ 'as' => '', 'uses' =>'EcomController@showMessage']);--}}
+        {{--Route::get('order/{id}', [ 'as' => '', 'uses' =>'EcomController@showOrder']);--}}
+        {{--Route::get('page/create', [ 'as' => '', 'uses' =>'EcomController@createPage']);--}}
+        {{--Route::get('page/{page_name}/edit', [ 'as' => '', 'uses' =>'EcomController@editPage']);--}}
+        {{--Route::get('coupon/create', [ 'as' => '', 'uses' =>'EcomController@createCoupon']);--}}
+        {{--Route::get('coupon/{id}/edit', [ 'as' => '', 'uses' =>'EcomController@editCoupon']);--}}
+        {{----}}
+
+
+
 {{--         <li class="{{ setActive('admin/sales/*') }}">
             <a class="{{ setActive('admin') }}" href="javascript:void(0)"><i class="clip-home-3"></i> <span class="title"> Sales </span><span class="selected"></span> </a>
             <ul class="sub-menu">

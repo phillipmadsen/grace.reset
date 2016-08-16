@@ -16,7 +16,7 @@ use App\Models\OptionValue;
 use App\Models\ProductFeature;
 use App\Models\ProductVariant;
 use App\Models\OrderProduct;
-
+use Cartalyst\Sentinel\Sentinel;
 use File;
 use Auth;
 use App;
@@ -28,11 +28,11 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('sentinel.auth', ['except' => [
-//             'index',
-//             'show',
-//             'search'
-//         ]]);
+        $this->middleware('sentinel.auth', ['except' => [
+             'index',
+             'show',
+             'search'
+         ]]);
     
     }
 
@@ -46,7 +46,7 @@ class ProductController extends Controller
             $best_sellers[] = $product->product;
         }
         helperFunctions::getPageInfo($sections,$cart,$total);
-        return view('site.index', compact('new_products', 'best_sellers', 'sections', 'cart', 'total'));
+        return view('frontend.shop.index', compact('new_products', 'best_sellers', 'sections', 'cart', 'total'));
     }
 
     public function show($id)
@@ -57,7 +57,7 @@ class ProductController extends Controller
 
         $similair = Category::find($product_categories[array_rand($product_categories)])->products()->whereNotIn('id', array($id))->orderByRaw("RAND()")->take(6)->get();
         helperFunctions::getPageInfo($sections,$cart,$total);
-        return view('site.product', compact('sections', 'product', 'similair', 'cart', 'total'));
+        return view('frontend.shop.product', compact('sections', 'product', 'similair', 'cart', 'total'));
     }
 
     public function store(Request $request)

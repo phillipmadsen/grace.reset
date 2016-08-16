@@ -22,30 +22,19 @@
         <!-- start: MAIN CSS -->
         <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Raleway:400,100,200,300,500,600,700,800,900/" />
 
-        <link type="text/css" rel="stylesheet" href="/clip/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-        <link type="text/css" rel="stylesheet" href="/clip/bower_components/font-awesome/css/font-awesome.min.css" />
-        <link href="/clip/assets/css/bootstrap-toggle.min.css" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="/clip/assets/fonts/clip-font.min.css" />
-        <link type="text/css" rel="stylesheet" href="/clip/bower_components/iCheck/skins/all.css" />
+        <link type="text/css" rel="stylesheet" href="{!! asset('/clip/bower_components/bootstrap/dist/css/bootstrap.min.css') !!}" />
+        <link type="text/css" rel="stylesheet" href="{!! asset('/clip/bower_components/font-awesome/css/font-awesome.min.css') !!}" />
+        <linkk type="text/css" rel="stylesheet" href="{!! asset('/clip/assets/css/bootstrap-toggle.min.css') !!}" />
+        <link type="text/css" rel="stylesheet" href="{!! asset('/clip/assets/fonts/clip-font.min.css') !!}" />
+        <link type="text/css" rel="stylesheet" href="{!! asset('/clip/bower_components/iCheck/skins/all.css') !!}" />
 
-        <link type="text/css" rel="stylesheet" href="/clip/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" />
-        <link type="text/css" rel="stylesheet" href="/clip/bower_components/sweetalert/dist/sweetalert.css" />
-        <link type="text/css" rel="stylesheet" href="/clip/assets/css/main.min.css" />
-        <link type="text/css" rel="stylesheet" href=/clip/assets/css/main-responsive.min.css" />
-        <link type="text/css" rel="stylesheet" media="print" href="/clip/assets/css/print.min.css" />
-        <link type="text/css" rel="stylesheet" id="skin_color" href="/clip/assets/css/theme/light.min.css" />
-
-        <link rel="stylesheet" href="{!! asset('/clip/assets/fonts/style.css') !!}">
-        <link rel="stylesheet" href="{!! asset('/clip/assets/css/main.css') !!}">
-        <link rel="stylesheet" href="{!! asset('/clip/assets/css/main-responsive.css') !!}">
-
-
-
-        <link rel="stylesheet" href="{!! asset('/clip/assets/css/theme_light.css') !!}" type="text/css" id="skin_color">
-        <link rel="stylesheet" href="{!! asset('/clip/assets/css/print.css') !!}" type="text/css" media="print"/>
-
-        <link rel="stylesheet" href="{!! asset('/clip/assets/css/important.css') !!}">
-
+        <link type="text/css" rel="stylesheet" href="{!! asset('/clip/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css') !!}" />
+        <link type="text/css" rel="stylesheet" href="{!! asset('/clip/bower_components/sweetalert/dist/sweetalert.css') !!}" />
+        <link type="text/css" rel="stylesheet" href="{!! asset('/clip/assets/css/main.min.css') !!}" />
+        <link type="text/css" rel="stylesheet" href="{!! asset('/clip/assets/css/main-responsive.min.css') !!}" />
+        <link type="text/css" rel="stylesheet" media="print" href="{!! asset('/clip/assets/css/print.min.css') !!}" />
+        <link type="text/css" rel="stylesheet" id="skin_color" href="{!! asset('/clip/assets/css/theme/light.min.css') !!}" />
+        <link href="{!! asset('/clip/assets/css/bootstrap-toggle.min.css') !!}" rel="stylesheet" />
 
 
 
@@ -56,6 +45,7 @@
             .panel-heading{padding:10px 15px;border-bottom:1px solid transparent;border-top-left-radius:3px;border-top-right-radius:3px;}
             .panel-heading{background-color:#F5F4F9;background-image:linear-gradient(to bottom,#F5F4F9 0%,#ECEAF3 100%);background-repeat:repeat-x;border-bottom:1px solid #CDCDCD;border-radius:6px 6px 0 0;box-shadow:0 1px 0 #FFFFFF inset;height:36px;padding-left:40px!important;position:relative;}
             .panel-default>.panel-heading{color:#333;background-color:#f5f5f5;border-color:#ddd;}
+            .page-header { border-bottom:0 none; }
         </style>
 
         <!--[if IE 7]>
@@ -185,43 +175,33 @@
 
 
 
-    <script type="text/javascript" src="/clip/bower_components/jquery-ui/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/clip/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/clip/bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-    <script type="text/javascript" src="/clip/bower_components/blockUI/jquery.blockUI.js"></script>
-    <script type="text/javascript" src="/clip/bower_components/iCheck/icheck.min.js"></script>
-    <script type="text/javascript" src="/clip/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js"></script>
-    <script type="text/javascript" src="/clip/bower_components/jquery.cookie/jquery.cookie.js"></script>
-    <script type="text/javascript" src="/clip/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript" src="/clip/assets/js/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript" src="{!! asset('/clip/bower_components/jquery-ui/jquery-ui.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/clip/bower_components/bootstrap/dist/js/bootstrap.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/clip/bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/clip/bower_components/blockUI/jquery.blockUI.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/clip/bower_components/iCheck/icheck.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/clip/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/clip/bower_components/jquery.cookie/jquery.cookie.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('/clip/bower_components/sweetalert/dist/sweetalert.min.js') !!}"></script>
+    <script src="{!! asset('/clip/assets/js/bootstrap-toggle.min.js') !!}"></script>
+        <script type="text/javascript" src="{!! asset('/clip/assets/js/min/main.min.js') !!}"></script>
 
-        <script src="{!! asset('/clip/assets/plugins/less/less-1.5.0.min.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/jquery-cookie/jquery.cookie.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js') !!}"></script>
 
-        <script src="{!! asset('/clip/assets/plugins/nestable/jquery.nestable.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/js/ui-nestable.js') !!}"></script>
-        <script src="{!! asset('/clip/assets/js/main.js') !!}"></script>
+        <script src="{!! asset('/clip/assets/js/min/index.min.js') !!}"></script>
         <!-- end: MAIN JAVASCRIPTS -->
-        <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
 @if (Request::url(getLang() . '/admin'))
 
 @endif
-
-
-
-
-
-
-
+        <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 @yield('bottomscripts')
         <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script>
-    jQuery(document).ready(function() {
-        Main.init();
-@yield('clipinline')
-    });
-</script>
+        <script>
+            $().ready(function() {
+                Main.init();
+                @yield('clipinline')
+            });
+        </script>
     </body>
     <!-- end: BODY -->
 </html>

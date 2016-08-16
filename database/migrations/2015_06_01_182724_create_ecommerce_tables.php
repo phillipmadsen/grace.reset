@@ -24,11 +24,10 @@ class CreateEcommerceTables extends Migration
             $table->string('manufacturer')->default('The Grace Company');
             $table->decimal('price', 11, 2)->nullable();
             $table->longText('details');
-            $table->text('short');
-            $table->text('description');
+            $table->longText('description');
             $table->string('model', 12)->nullable();
-            $table->string('sku', 12)->nullable();
-            $table->string('upc', 12)->nullable();
+            $table->string('sku', 12)->default('000000');
+            $table->string('upc', 12)->default('63643');
             $table->integer('quantity')->unsigned()->default('00');
 
             $table->string('thumbnail')->nullable();
@@ -42,6 +41,7 @@ class CreateEcommerceTables extends Migration
             $table->string('google_plus_title')->nullable();
             $table->string('twitter_title')->nullable();
 
+            
 
 
             $table->string('lang', 255);
@@ -156,7 +156,13 @@ class CreateEcommerceTables extends Migration
             $table->increments('id');
             $table->unsignedInteger('product_id');
             $table->string('photo_src');
-            $table->string('alt');
+            $table->string('alt')->nullable();
+            $table->string('caption',60)->nullable();
+            $table->string('photoinfo',160)->nullable();
+            $table->string('linkto')->nullable();
+            $table->boolean('use_main')->default(1);
+            $table->boolean('use_thumb')->default(1);
+            $table->boolean('use_gallery')->default(1);
             $table->timestamps();
             $table->engine = 'InnoDB';
 

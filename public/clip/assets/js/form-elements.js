@@ -73,13 +73,45 @@ var FormElements = function () {
         $('#tags_1').tagsInput({
             width: 'auto'
         });
+        $('#meta_keywords').tagsInput({
+            width: 'auto'
+        });
+        $('input[name="meta_keywords"]').tagsInput({
+            width: 'auto'
+        });
+
+        $('input#meta_keywords.form-control').tagsInput({
+           // 'height':'100px',
+           // 'width':'auto',
+            'interactive':true,
+           // 'defaultText':'add Keywords',
+//            'onAddTag':callback_function,
+//            'onRemoveTag':callback_function,
+//            'onChange' : callback_function,
+            //  'delimiter': [',',';'],   // Or a string with a single delimiter. Ex: ';'
+            'removeWithBackspace' : true,
+            'minChars' : 3,
+            'maxChars' : 50, // if not provided there is no limit
+            'placeholderColor' : '#666666'
+        });
     };
+
     //function to initiate summernote
     var runSummerNote = function () {
+        $('input[type="textarea"]').summernote({
+            height: 300,
+            tabsize: 2
+        });
         $('.summernote').summernote({
             height: 300,
             tabsize: 2
         });
+        $('textarea.form-control.summernote').summernote({
+            height: 300,
+            tabsize: 2
+        });
+ 
+    
     };
     //function to initiate ckeditor
     var runCKEditor = function () {
@@ -90,8 +122,6 @@ var FormElements = function () {
     var runFileInput = function () {
         $("#input-simple").fileinput();
         $("#input-preview").fileinput();
-        var support = input.css('width') == "400px";
-
         var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' +
         'onclick="alert(\'Call your custom code here.\')">' +
         '<i class="glyphicon glyphicon-tag"></i>' +
@@ -101,6 +131,7 @@ var FormElements = function () {
             maxFileSize: 2000,
             showClose: false,
             showCaption: false,
+            showUpload: false,
             browseLabel: '',
             removeLabel: '',
             browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
@@ -115,7 +146,10 @@ var FormElements = function () {
     };
     var runFileInput = function () {
         $(".input-simple").fileinput();
-        $(".input-preview").fileinput();
+        $(".input-preview").fileinput({
+            showUpload: false,
+            autoUpload: true,
+        });
         var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' +
             'onclick="alert(\'Call your custom code here.\')">' +
             '<i class="glyphicon glyphicon-tag"></i>' +
@@ -125,6 +159,7 @@ var FormElements = function () {
             maxFileSize: 2000,
             showClose: false,
             showCaption: false,
+            showUpload: false,
             browseLabel: '',
             removeLabel: '',
             browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
@@ -132,7 +167,7 @@ var FormElements = function () {
             removeTitle: 'Cancel or reset changes',
             elErrorContainer: '#kv-avatar-errors',
             msgErrorClass: 'alert alert-block alert-danger',
-            defaultPreviewContent: '<img src="http://www.placehold.it/400x400/EFEFEF/AAAAAA?text=no+image" alt="Your Avatar" >',
+            defaultPreviewContent: '<img src="http://www.placehold.it/400x400/EFEFEF/AAAAAA?text=no+image" alt="alt" >',
             layoutTemplates: { main2: '{preview} {remove} {browse}' },
             allowedFileExtensions: ["jpg", "png", "gif"]
         });

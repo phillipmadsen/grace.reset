@@ -24,8 +24,16 @@ Route::group(['prefix' => LaravelLocalization::getCurrentLocale(), 'before' => [
         Route::post('product/{id}/edit', ['as' => 'product.edit', 'uses' =>'ProductController@edit']);
 
         Route::get('users', [ 'as' => '', 'uses' =>'EcomController@users']);
-        Route::get('categories', [ 'as' => '', 'uses' =>'EcomController@categories']);
-        Route::get('sections', [ 'as' => '', 'uses' =>'EcomController@sections']);
+        Route::get('categories', [ 'as' => 'admin.categories', 'uses' =>'EcomController@categories']);
+        Route::get('category/create', [ 'as' => 'admin.categories.create', 'uses' =>'EcomController@createCategory']);
+        Route::get('category/{id}/edit', [ 'as' => 'admin.categories.edit', 'uses' =>'EcomController@editCategory']);
+
+
+        Route::get('sections', [ 'as' => 'admin.sections', 'uses' =>'EcomController@sections']);
+        Route::get('section/create', [ 'as' => 'admin.sections.create', 'uses' =>'EcomController@createSection']);
+        Route::get('section/{id}/edit', [ 'as' => 'admin.section.edit', 'uses' =>'EcomController@editSection']);
+
+
         Route::get('payment', [ 'as' => '', 'uses' =>'EcomController@payment']);
         Route::post('payment', [ 'as' => '', 'uses' =>'EcomController@paymentConfig']);
         Route::get('orders', [ 'as' => '', 'uses' =>'EcomController@orders']);
@@ -34,12 +42,10 @@ Route::group(['prefix' => LaravelLocalization::getCurrentLocale(), 'before' => [
         Route::get('coupons', [ 'as' => '', 'uses' =>'EcomController@coupons']);
 
 
-        Route::get('category/create', [ 'as' => '', 'uses' =>'EcomController@createCategory']);
-        Route::get('category/{id}/edit', [ 'as' => '', 'uses' =>'EcomController@editCategory']);
+
         Route::get('user/create', [ 'as' => '', 'uses' =>'EcomController@createUser']);
         Route::get('user/{id}/edit', [ 'as' => '', 'uses' =>'EcomController@editUser']);
-        Route::get('section/create', [ 'as' => '', 'uses' =>'EcomController@createSection']);
-        Route::get('section/{id}/edit', [ 'as' => '', 'uses' =>'EcomController@editSection']);
+
         Route::get('message/{id}', [ 'as' => '', 'uses' =>'EcomController@showMessage']);
         Route::get('order/{id}', [ 'as' => '', 'uses' =>'EcomController@showOrder']);
         Route::get('page/create', [ 'as' => '', 'uses' =>'EcomController@createPage']);
