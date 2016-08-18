@@ -85,11 +85,16 @@
     <div class="col-md-12">
 
         <div class="col-md-8">
-                        <!-- Short Description Field -->
-            <div class="form-group  ">
-                {!! Form::label('short_description', 'Short Description:') !!}
-                {!! Form::textarea('short_description', null, ['class' => 'form-control summernote', 'rows' => '5']) !!}
+
+
+       <div class="form-group">
+                {!! Form::label('details', 'Details:') !!}
+                {!! Form::textarea('details', null, ['class' => 'form-control summernote' ]) !!}
             </div>
+
+
+
+       
 
         </div>
         <div class="col-md-4">
@@ -113,14 +118,6 @@
             {!! Form::label('description', trans('product.description')) !!}
             {!! Form::textarea('details', null, ['class' => 'form-control summernote', 'rows' => '5']) !!}
         </div>
-
-  
-        <div class="form-group col-md-12 col-lg-12">
-      
-             {!! Form::label('details', trans('product.details')) !!}
-            {!! Form::textarea('description', null, ['class' => 'form-control summernote', 'rows' => '5']) !!}
-        </div>
-   
 
         <!-- Video Url Field -->
         <div class="form-group col-md-8 col-lg-8">

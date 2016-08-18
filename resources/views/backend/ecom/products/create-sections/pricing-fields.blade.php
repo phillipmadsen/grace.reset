@@ -15,14 +15,19 @@
     <!-- Price Field -->
         <div class="form-group col-sm-2">
             {!! Form::label('price', 'Price:') !!}
+            <div class="input-group"><div class="input-group-addon">$</div>
             {!! Form::number('price', null, ['class' => 'form-control']) !!}
+            </div>
         </div>
+
 
 
         <!-- Quantity Field -->
         <div class="form-group col-sm-2">
             {!! Form::label('quantity', 'Quantity:') !!}
+            <div class="input-group"><div class="input-group-addon">#</div>
             {!! Form::number('quantity', null, ['class' => 'form-control']) !!}
+            </div>
         </div>
         <!-- Model Field -->
         <div class="form-group col-sm-2">
