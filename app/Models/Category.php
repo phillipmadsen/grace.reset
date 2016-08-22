@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\SluggableTrait;
-use Cviebrock\EloquentSluggable\SluggableInterface;
 use App\Interfaces\ModelInterface as ModelInterface;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Category.
@@ -21,12 +21,10 @@ class Category extends Model implements ModelInterface, SluggableInterface
     protected $fillable = ['title', 'slug', 'section_id', 'meta_description', 'name', 'lang'];
     protected $appends = ['url'];
 
-    protected $sluggable = array(
+    protected $sluggable = [
         'build_from' => 'title',
-        'save_to' => 'slug',
-    );
-
-
+        'save_to'    => 'slug',
+    ];
 
     public function setUrlAttribute($value)
     {
@@ -38,16 +36,16 @@ class Category extends Model implements ModelInterface, SluggableInterface
         return 'category/'.$this->attributes['slug'];
     }
 
-       public function articles()
+    public function articles()
     {
         return $this->hasMany('App\Models\Article');
     }
 
     /**
      * Relationship with the product model.
-     * @return    Illuminate\Database\Eloquent\Relations\BelongsToMany
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-
     public function products()
     {
         return $this->belongsToMany(Product::class, 'category_product');
@@ -60,6 +58,6 @@ class Category extends Model implements ModelInterface, SluggableInterface
 
     public function section()
     {
-        return $this->belongsTo( Section::class);
+        return $this->belongsTo(Section::class);
     }
 }

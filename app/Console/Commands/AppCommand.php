@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Command;
 use Schema;
 use Sentinel;
-use Illuminate\Console\Command;
 
 /**
  * Class AppCommand.
@@ -32,12 +32,12 @@ class AppCommand extends Command
      *
      * @var array
      */
-    protected $userData = array(
+    protected $userData = [
         'first_name' => null,
-        'last_name' => null,
-        'email' => null,
-        'password' => null,
-    );
+        'last_name'  => null,
+        'email'      => null,
+        'password'   => null,
+    ];
 
     /**
      * Execute the console command.
@@ -257,9 +257,9 @@ class AppCommand extends Command
     protected function sentinelCreateUser()
     {
         // Prepare the user data array.
-        $data = array_merge($this->userData, array(
+        $data = array_merge($this->userData, [
             'activated' => 1,
-        ));
+        ]);
 
         $user = Sentinel::registerAndActivate($data);
 
@@ -275,13 +275,13 @@ class AppCommand extends Command
      */
     protected function sentinelCreateDummyUser()
     {
-        $user = Sentinel::registerAndActivate(array(
+        $user = Sentinel::registerAndActivate([
             'first_name' => 'Super',
-            'last_name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => 'admin',
-            'activated' => 1,
-        ));
+            'last_name'  => 'Admin',
+            'email'      => 'admin@admin.com',
+            'password'   => 'admin',
+            'activated'  => 1,
+        ]);
 
         $this->role->users()->attach($user);
 

@@ -229,7 +229,7 @@ return [
 | Facades coding by phillip
 |--------------------------------------------------------------------------
  */
-        'Str'                 => Illuminate\Support\Str::class,
+        'Str'                  => Illuminate\Support\Str::class,
          'Ups'                 => Beaudierman\Ups\Facades\Ups::class,
          'Menu'                => Caffeinated\Menus\Facades\Menu::class,
          'Uuid'                => Webpatser\Uuid\Uuid::class,

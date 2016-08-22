@@ -11,7 +11,6 @@ class CreatePhotoGalleriesTable extends Migration
     public function up()
     {
         Schema::create('photo_galleries', function (Blueprint $table) {
-
             $table->increments('id');
             $table->string('title', 255);
             $table->string('slug')->nullable();

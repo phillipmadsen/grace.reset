@@ -10,7 +10,7 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table)  {
+        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('author_id')->unsigned()->nullable();
             $table->boolean('is_published')->default(0);
@@ -42,8 +42,7 @@ class CreateArticlesTable extends Migration
             $table->softDeletes();
         });
 
-        Schema::create('blog_comments', function(Blueprint $table)
-        {
+        Schema::create('blog_comments', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('blog_id');
             $table->string('name');

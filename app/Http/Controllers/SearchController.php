@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use View;
-use Search;
 use App\Services\Pagination;
+use Illuminate\Http\Request;
+use Search;
+use View;
 
 /**
  * Class SearchController.
@@ -26,8 +25,7 @@ class SearchController extends Controller
     {
         $q = $request->get('search');
 
-        View::composer('frontend/layout/menu', function ($view) use ($q)
-        {
+        View::composer('frontend/layout/menu', function ($view) use ($q) {
             $view->with('q', $q);
         });
 

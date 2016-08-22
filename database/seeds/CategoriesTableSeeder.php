@@ -3,105 +3,105 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class CategoriesTableSeeder extends Seeder {
-
+class CategoriesTableSeeder extends Seeder
+{
     /**
      * Run the database seeding.
      *
      * @return void
      */
-    public function run() {
-//        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+    public function run()
+    {
+        //        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 //        \DB::table('categories')->truncate();
 //        \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
 
         DB::table('categories')->insert([
             [
-                'title' => 'The Grace Company',
-                'slug' => Str::slug('the-grace-company'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'The Grace Company',
+                'slug'             => Str::slug('the-grace-company'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'The Grace Company',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Hand Quilting',
-                'slug' => Str::slug('hand-quilting'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Hand Quilting',
+                'slug'             => Str::slug('hand-quilting'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Hand Quilting',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Machine Quilting',
-                'slug' => Str::slug('machine-quilting'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Machine Quilting',
+                'slug'             => Str::slug('machine-quilting'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Machine Quilting',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Quilting Machine',
-                'slug' => Str::slug('quilting-machine'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Quilting Machine',
+                'slug'             => Str::slug('quilting-machine'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Quilting Machine',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Quilting Hoop',
-                'slug' => Str::slug('quilting-hoop'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Quilting Hoop',
+                'slug'             => Str::slug('quilting-hoop'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Quilting Hoop',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Lap Hoops',
-                'slug' => Str::slug('lap-hoops'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Lap Hoops',
+                'slug'             => Str::slug('lap-hoops'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Lap Hoops',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Quilting Frames',
-                'slug' => Str::slug('quilting-frames'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Quilting Frames',
+                'slug'             => Str::slug('quilting-frames'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Quilting Frames',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Qnique',
-                'slug' => Str::slug('qnique'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Qnique',
+                'slug'             => Str::slug('qnique'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Qnique',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Quilting Accessories',
-                'slug' => Str::slug('quilting-accessories'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Quilting Accessories',
+                'slug'             => Str::slug('quilting-accessories'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Quilting Accessories',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Machine Frame Accessories',
-                'slug' => Str::slug('machine-frame-accessories'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Machine Frame Accessories',
+                'slug'             => Str::slug('machine-frame-accessories'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Machine Frame Accessories',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Hand Frame Accessories',
-                'slug' => Str::slug('hand-frame-accessories'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Hand Frame Accessories',
+                'slug'             => Str::slug('hand-frame-accessories'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Hand Frame Accessories',
-                'lang' => 'en'],
+                'lang' => 'en', ],
             [
-                'title' => 'Hoop Accessories',
-                'slug' => Str::slug('hoop-accessories'),
-                'section_id' => 1,
-                'meta_description' => NULL,
+                'title'            => 'Hoop Accessories',
+                'slug'             => Str::slug('hoop-accessories'),
+                'section_id'       => 1,
+                'meta_description' => null,
 //                'name' => 'Hoop Accessories',
-                'lang' => 'en']
+                'lang' => 'en', ],
         ]);
     }
-
 }

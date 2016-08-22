@@ -8,49 +8,50 @@ Author URI: http://www.affordableprogrammer.com
 License: GNU GPL 2
 */
 
-function ig_mu_plugins_loader() {
-	if( ! defined( 'WPMU_PLUGIN_DIR' ) ) {
-		return;
-	}
+function ig_mu_plugins_loader()
+{
+    if (!defined('WPMU_PLUGIN_DIR')) {
+        return;
+    }
 
-	$mu_plugins_dirs = array_filter( scandir( WPMU_PLUGIN_DIR ) );
+    $mu_plugins_dirs = array_filter(scandir(WPMU_PLUGIN_DIR));
 
-	$non_dirs = array(
-		'.',
-		'..',
-		'.DS_Store',
-		);
+    $non_dirs = [
+        '.',
+        '..',
+        '.DS_Store',
+        ];
 
-	//strip out non-dirs
-	for( $i = 0; $i < count( $non_dirs ); $i++ ) {
-		$not_dir_key = array_search( $non_dirs[ $i ], $mu_plugins_dirs );
+    //strip out non-dirs
+    for ($i = 0; $i < count($non_dirs); $i++) {
+        $not_dir_key = array_search($non_dirs[$i], $mu_plugins_dirs);
 
-		if( $not_dir_key !== false ) {
-			unset( $mu_plugins_dirs[ $not_dir_key ] );
-		}
+        if ($not_dir_key !== false) {
+            unset($mu_plugins_dirs[$not_dir_key]);
+        }
 
-		unset( $not_dir_key );
-	}
+        unset($not_dir_key);
+    }
 
-	unset( $non_dirs );
+    unset($non_dirs);
 
-	if( empty( $mu_plugins_dirs ) ) {
-		return;
-	}
+    if (empty($mu_plugins_dirs)) {
+        return;
+    }
 
-	sort( $mu_plugins_dirs );
+    sort($mu_plugins_dirs);
 
-	//load up mu-plugins from each valid directory
-	foreach( $mu_plugins_dirs as $dir ) {
-		$plugin_dir = trailingslashit( WPMU_PLUGIN_DIR ) . $dir;
-		$plugin_file = trailingslashit( $plugin_dir ) . $dir . '.php';
+    //load up mu-plugins from each valid directory
+    foreach ($mu_plugins_dirs as $dir) {
+        $plugin_dir = trailingslashit(WPMU_PLUGIN_DIR).$dir;
+        $plugin_file = trailingslashit($plugin_dir).$dir.'.php';
 
-		if( is_dir( $plugin_dir ) && file_exists( $plugin_file ) ) {
-			require_once( $plugin_file );
-		}
+        if (is_dir($plugin_dir) && file_exists($plugin_file)) {
+            require_once $plugin_file;
+        }
 
-		unset( $plugin_file, $plugin_dir );
-	}
+        unset($plugin_file, $plugin_dir);
+    }
 }
 
 ig_mu_plugins_loader();
@@ -58,44 +59,46 @@ ig_mu_plugins_loader();
 
 //EOF
 
-function colourBrightness($hex, $percent) {
-  // Work out if hash given
-	$hash = '';
-	if (stristr($hex,'#')) {
-		$hex = str_replace('#','',$hex);
-		$hash = '#';
-	}
+function colourBrightness($hex, $percent)
+{
+    // Work out if hash given
+    $hash = '';
+    if (stristr($hex, '#')) {
+        $hex = str_replace('#', '', $hex);
+        $hash = '#';
+    }
   /// HEX TO RGB
-	$rgb = array(hexdec(substr($hex,0,2)), hexdec(substr($hex,2,2)), hexdec(substr($hex,4,2)));
+    $rgb = [hexdec(substr($hex, 0, 2)), hexdec(substr($hex, 2, 2)), hexdec(substr($hex, 4, 2))];
   //// CALCULATE
-	for ($i=0; $i<3; $i++) {
-    // See if brighter or darker
-		if ($percent > 0) {
-      // Lighter
-			$rgb[$i] = round($rgb[$i] * $percent) + round(255 * (1-$percent));
-		} else {
-      // Darker
-			$positivePercent = $percent - ($percent*2);
-			$rgb[$i] = round($rgb[$i] * $positivePercent) + round(0 * (1-$positivePercent));
-		}
+    for ($i = 0; $i < 3; $i++) {
+        // See if brighter or darker
+        if ($percent > 0) {
+            // Lighter
+            $rgb[$i] = round($rgb[$i] * $percent) + round(255 * (1 - $percent));
+        } else {
+            // Darker
+            $positivePercent = $percent - ($percent * 2);
+            $rgb[$i] = round($rgb[$i] * $positivePercent) + round(0 * (1 - $positivePercent));
+        }
     // In case rounding up causes us to go to 256
-		if ($rgb[$i] > 255) {
-			$rgb[$i] = 255;
-		}
-	}
+        if ($rgb[$i] > 255) {
+            $rgb[$i] = 255;
+        }
+    }
   //// RBG to Hex
-	$hex = '';
-	for($i=0; $i < 3; $i++) {
-    // Convert the decimal digit to hex
-		$hexDigit = dechex($rgb[$i]);
+    $hex = '';
+    for ($i = 0; $i < 3; $i++) {
+        // Convert the decimal digit to hex
+        $hexDigit = dechex($rgb[$i]);
     // Add a leading zero if necessary
-		if(strlen($hexDigit) == 1) {
-			$hexDigit = "0" . $hexDigit;
-		}
+        if (strlen($hexDigit) == 1) {
+            $hexDigit = '0'.$hexDigit;
+        }
     // Append to the hex string
-		$hex .= $hexDigit;
-	}
-	return $hash.$hex;
+        $hex .= $hexDigit;
+    }
+
+    return $hash.$hex;
 }
 
 // if (!function_exists('html_minify_buffer')){

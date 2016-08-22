@@ -11,7 +11,6 @@ class CreateMaillistTable extends Migration
     public function up()
     {
         Schema::create('maillist', function (Blueprint $table) {
-
             $table->increments('id');
             $table->string('email');
             $table->timestamps();

@@ -2,11 +2,11 @@
 
 namespace App\Repositories\Category;
 
-use Config;
-use App\Models\Category;
-use App\Repositories\RepositoryAbstract;
-use App\Repositories\CrudableInterface;
 use App\Exceptions\Validation\ValidationException;
+use App\Models\Category;
+use App\Repositories\CrudableInterface;
+use App\Repositories\RepositoryAbstract;
+use Config;
 
 /**
  * Class CategoryRepository.
@@ -63,7 +63,7 @@ class CategoryRepository extends RepositoryAbstract implements CategoryInterface
         $result->page = $page;
         $result->limit = $limit;
         $result->totalItems = 0;
-        $result->items = array();
+        $result->items = [];
 
         $query = $this->category->orderBy('title');
 
@@ -106,9 +106,9 @@ class CategoryRepository extends RepositoryAbstract implements CategoryInterface
     /**
      * @param $attributes
      *
-     * @return bool|mixed
-     *
      * @throws \App\Exceptions\Validation\ValidationException
+     *
+     * @return bool|mixed
      */
     public function create($attributes)
     {
@@ -126,9 +126,9 @@ class CategoryRepository extends RepositoryAbstract implements CategoryInterface
      * @param $id
      * @param $attributes
      *
-     * @return bool|mixed
-     *
      * @throws \App\Exceptions\Validation\ValidationException
+     *
+     * @return bool|mixed
      */
     public function update($id, $attributes)
     {

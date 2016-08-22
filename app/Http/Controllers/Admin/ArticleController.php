@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use View;
+use App\Exceptions\Validation\ValidationException;
+use App\Http\Controllers\Controller;
+use App\Repositories\Article\ArticleInterface;
+use App\Repositories\Article\ArticleRepository as Article;
+use App\Repositories\Category\CategoryInterface;
+use App\Repositories\Category\CategoryRepository as Category;
+use App\Services\Pagination;
 use Flash;
 use Input;
 use Response;
-use App\Services\Pagination;
-use App\Http\Controllers\Controller;
-use App\Repositories\Article\ArticleInterface;
-use App\Repositories\Category\CategoryInterface;
-use App\Exceptions\Validation\ValidationException;
-use App\Repositories\Article\ArticleRepository as Article;
-use App\Repositories\Category\CategoryRepository as Category;
+use View;
 
 /**
  * Class ArticleController.

@@ -62,15 +62,10 @@ Route::group(['prefix' => LaravelLocalization::getCurrentLocale()], function () 
     });
      // SEWING MACHINES / QNIQUE
     Route::group(['prefix' => '/sewing-machines/qnique'], function () {
-
         Route::get('/', ['as' => 'qnique', 'uses' => 'LiveSiteController@qnique']);
         Route::get('/features', ['as' => 'qnique.features', 'uses' => 'LiveSiteController@qfeatures']);
         Route::get('/specs', ['as' => 'qnique.specs', 'uses' => 'LiveSiteController@qspecs']);
         Route::get('/accessories', ['as' => 'qnique.accessories', 'uses' => 'LiveSiteController@qaccessories']);
        // Route::get('/comparison', ['as' => 'qnique.comparison', 'uses' => 'LiveSiteController@comparison']);
-
     });
-
-
-
 });

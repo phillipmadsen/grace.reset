@@ -12,11 +12,11 @@ class Feeder
     /**
      * @var array
      */
-    protected $settings = array(
-        'title' => 'Fully CMS',
+    protected $settings = [
+        'title'       => 'Fully CMS',
         'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        'link' => 'link',
-    );
+        'link'        => 'link',
+    ];
 
     /**
      * @param $entries

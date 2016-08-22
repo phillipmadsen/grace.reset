@@ -2,10 +2,9 @@
 
 namespace app\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Section;
+use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
@@ -20,8 +19,9 @@ class SectionController extends Controller
             'name' => 'required',
         ]);
         Section::create($request->all());
+
         return \Redirect(getLang().'/admin/sections')->with([
-            'flash_message' => 'Section Successfully Created'
+            'flash_message' => 'Section Successfully Created',
         ]);
     }
 
@@ -31,18 +31,19 @@ class SectionController extends Controller
             'name' => 'required',
         ]);
         Section::find($id)->update($request->all());
+
         return \Redirect()->back()->with([
-            'flash_message' => 'Section Successfully Edited'
+            'flash_message' => 'Section Successfully Edited',
         ]);
     }
 
     public function delete($id)
     {
         Section::destroy($id);
+
         return \Redirect(getLang().'/admin/sections')->with([
             'flash_message' => 'Section has been Successfully removed',
-            'flash-warning' => true
+            'flash-warning' => true,
         ]);
-        ;
     }
 }

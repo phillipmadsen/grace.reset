@@ -2,25 +2,21 @@
 
 namespace app\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
+use App;
+use App\Ecommerce\helperFunctions;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\CategoryProduct;
 use App\Models\AlbumPhoto;
-use App\Models\Section;
 use App\Models\Cart;
+use App\Models\Category;
+use App\Models\CategoryProduct;
 use App\Models\Option;
 use App\Models\OptionValue;
+use App\Models\Product;
 use App\Models\ProductFeature;
 use App\Models\ProductVariant;
-use File;
 use Auth;
-use App;
-use Session;
-use \Illuminate\Database\Eloquent\Collection;
-use App\Ecommerce\helperFunctions;
+use File;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -29,9 +25,8 @@ class ProductController extends Controller
         $this->middleware('sentinel.auth', ['except' => [
              'index',
              'show',
-             'search'
+             'search',
          ]]);
-    
     }
 
     public function index()
@@ -42,7 +37,8 @@ class ProductController extends Controller
         foreach ($get_best_sellers as $product) {
             $best_sellers[] = $product->product;
         }
-        helperFunctions::getPageInfo($sections,$cart,$total);
+        helperFunctions::getPageInfo($sections, $cart, $total);
+
         return view('site.index', compact('new_products', 'best_sellers', 'sections', 'cart', 'total'));
     }
 
@@ -52,24 +48,25 @@ class ProductController extends Controller
 
         $product_categories = $product->categories()->lists('id')->toArray();
 
-        $similair = Category::find($product_categories[array_rand($product_categories)])->products()->whereNotIn('id', array($id))->orderByRaw("RAND()")->take(6)->get();
-        helperFunctions::getPageInfo($sections,$cart,$total);
+        $similair = Category::find($product_categories[array_rand($product_categories)])->products()->whereNotIn('id', [$id])->orderByRaw('RAND()')->take(6)->get();
+        helperFunctions::getPageInfo($sections, $cart, $total);
+
         return view('site.product', compact('sections', 'product', 'similair', 'cart', 'total'));
     }
 
     public function store(Request $request)
     {
-        /**
+        /*
     	 * Validate the submitted Data
     	 */
         $this->validate($request, [
-            'name' => 'required',
+            'name'         => 'required',
             'manufacturer' => 'required',
-            'price' => 'required',
-            'details' => 'required',
-            'quantity' => 'required',
-            'categories' => 'required',
-            'thumbnail' => 'required|image',
+            'price'        => 'required',
+            'details'      => 'required',
+            'quantity'     => 'required',
+            'categories'   => 'required',
+            'thumbnail'    => 'required|image',
         ]);
 
         if ($request->hasFile('album')) {
@@ -80,35 +77,35 @@ class ProductController extends Controller
             }
         }
 
-        /**
+        /*
     	 * Upload a new thumbnail
     	 */
-        $dest = "content/images/";
-        $name = str_random(11)."_".$request->file('thumbnail')->getClientOriginalName();
+        $dest = 'content/images/';
+        $name = str_random(11).'_'.$request->file('thumbnail')->getClientOriginalName();
         $request->file('thumbnail')->move($dest, $name);
         $product = $request->all();
-        $product['thumbnail'] = "/".$dest.$name;
+        $product['thumbnail'] = '/'.$dest.$name;
 
         $product = Product::create($product);
 
-        /**
+        /*
          * Upload Album Photos
          */
         if ($request->hasFile('album')) {
             foreach ($request->album as $photo) {
                 if ($photo) {
-                    $name = str_random(11)."_".$photo->getClientOriginalName();
+                    $name = str_random(11).'_'.$photo->getClientOriginalName();
                     $photo->move($dest, $name);
                     AlbumPhoto::create([
                         'product_id' => $product->id,
-                        'photo_src' => "/".$dest.$name
+                        'photo_src'  => '/'.$dest.$name,
                     ]);
                 }
             }
         }
 
 
-        /**
+        /*
     	 * Linking the categories to the product
     	 */
 
@@ -116,70 +113,66 @@ class ProductController extends Controller
             CategoryProduct::create(['category_id' => $category_id, 'product_id' => $product->id]);
         }
 
-        /**
+        /*
          * Linking the options to the product
          */
 
-        if ($request->has('options')){
+        if ($request->has('options')) {
             foreach ($request->options as $option_details) {
-                if (!empty($option_details['name']) && !empty($option_details['values'][0]) ) {
+                if (!empty($option_details['name']) && !empty($option_details['values'][0])) {
                     $option = Option::create([
-                        'name' => $option_details['name'],
-                        'product_id' => $product->id
+                        'name'       => $option_details['name'],
+                        'product_id' => $product->id,
                     ]);
                     foreach ($option_details['values'] as $value) {
                         OptionValue::create([
-                            'value' => $value,
-                            'option_id' => $option->id
+                            'value'     => $value,
+                            'option_id' => $option->id,
                         ]);
                     }
                 }
             }
         }
-        
-        if (!empty($request->attribute_name))
-            {
-                foreach ($request->attribute_name as $key => $item)
-                {
-                    $productVariant                          = new ProductVariant();
-                    $productVariant->attribute_name          = $item;
-                    $productVariant->product_attribute_value = $request->product_attribute_value[$key];
-                    $product->productVariants()->save($productVariant);
-                }
+
+        if (!empty($request->attribute_name)) {
+            foreach ($request->attribute_name as $key => $item) {
+                $productVariant = new ProductVariant();
+                $productVariant->attribute_name = $item;
+                $productVariant->product_attribute_value = $request->product_attribute_value[$key];
+                $product->productVariants()->save($productVariant);
+            }
         }
 
-        if (!empty($request->feature_name))
-            {
-                foreach ($request->feature_name as $feature)
-                {
-                    $productFeature               = new ProductFeature();
-                    $productFeature->feature_name = $feature;
-                    $product->productFeatures()->save($productFeature);
-                }
+        if (!empty($request->feature_name)) {
+            foreach ($request->feature_name as $feature) {
+                $productFeature = new ProductFeature();
+                $productFeature->feature_name = $feature;
+                $product->productFeatures()->save($productFeature);
             }
+        }
 
 
         return redirect(getLang().'/admin/products')->with([
-            'flash_message' => 'Product Created Successfully'
+            'flash_message' => 'Product Created Successfully',
         ]);
     }
 
     public function edit(Request $request, $id)
     {
         $product = Product::find($id);
-        /**
+        /*
     	 * Validate the submitted Data
     	 */
         $this->validate($request, [
-            'name' => 'required',
+            'name'         => 'required',
             'manufacturer' => 'required',
-            'price' => 'required',
-            'details' => 'required',
-            'quantity' => 'required',
-            'categories' => 'required',
-            'thumbnail' => 'image',
+            'price'        => 'required',
+            'details'      => 'required',
+            'quantity'     => 'required',
+            'categories'   => 'required',
+            'thumbnail'    => 'image',
         ]);
-        
+
         if ($request->hasFile('album')) {
             foreach ($request->album as $photo) {
                 if ($photo && strpos($photo->getMimeType(), 'image') === false) {
@@ -188,7 +181,7 @@ class ProductController extends Controller
             }
         }
 
-        /**
+        /*
     	 * Remove the old categories from the pivot table and maintain the reused ones
     	 */
         $added_categories = [];
@@ -200,7 +193,7 @@ class ProductController extends Controller
             }
         }
 
-        /**
+        /*
     	 * Link the new categories to the pivot table
     	 */
         foreach ($request->categories as $category_id) {
@@ -211,27 +204,27 @@ class ProductController extends Controller
 
         $info = $request->all();
 
-        /**
+        /*
     	 * Upload a new thumbnail and delete the old one
     	 */
-        $dest = "content/images/";
+        $dest = 'content/images/';
         if ($request->file('thumbnail')) {
             File::delete(public_path().$product->thumbnail);
-            $name = str_random(11)."_".$request->file('thumbnail')->getClientOriginalName();
+            $name = str_random(11).'_'.$request->file('thumbnail')->getClientOriginalName();
             $request->file('thumbnail')->move($dest, $name);
-            $info['thumbnail'] = "/".$dest.$name;
+            $info['thumbnail'] = '/'.$dest.$name;
         }
-        /**
+        /*
          * Upload Album Photos
          */
         if ($request->hasFile('album')) {
             foreach ($request->album as $photo) {
                 if ($photo) {
-                    $name = str_random(11)."_".$photo->getClientOriginalName();
+                    $name = str_random(11).'_'.$photo->getClientOriginalName();
                     $photo->move($dest, $name);
                     AlbumPhoto::create([
                         'product_id' => $product->id,
-                        'photo_src' => "/".$dest.$name
+                        'photo_src'  => '/'.$dest.$name,
                     ]);
                 }
             }
@@ -239,42 +232,36 @@ class ProductController extends Controller
 
         $product->update($info);
 
-        /**
+        /*
          * Linking the options to the product
          */
 
-        if ($request->has('options')){
+        if ($request->has('options')) {
             foreach ($request->options as $option_details) {
-                if (!empty($option_details['name']) && !empty($option_details['values']['name'][0]) ) {
-                    if (isset($option_details['id']))
-                    {
+                if (!empty($option_details['name']) && !empty($option_details['values']['name'][0])) {
+                    if (isset($option_details['id'])) {
                         $size = count($option_details['values']['id']);
                         Option::find($option_details['id'])->update(['name' => $option_details['name']]);
                         foreach ($option_details['values']['name'] as $key => $value) {
-                            if ($key < $size)
-                            {
+                            if ($key < $size) {
                                 OptionValue::find($option_details['values']['id'][$key])->update(['value' => $value]);
-                            }
-                            else
-                            {
+                            } else {
                                 OptionValue::create([
-                                    'value' => $value,
-                                    'option_id' => $option_details['id']
+                                    'value'     => $value,
+                                    'option_id' => $option_details['id'],
                                 ]);
                             }
                         }
-                    }
-                    else
-                    {
+                    } else {
                         $option = Option::create([
-                            'name' => $option_details['name'],
-                            'product_id' => $product->id
+                            'name'       => $option_details['name'],
+                            'product_id' => $product->id,
                         ]);
                         foreach ($option_details['values']['name'] as $value) {
                             if (!empty($value)) {
                                 OptionValue::create([
-                                    'value' => $value,
-                                    'option_id' => $option->id
+                                    'value'     => $value,
+                                    'option_id' => $option->id,
                                 ]);
                             }
                         }
@@ -284,22 +271,18 @@ class ProductController extends Controller
         }
 
 
-        if (!empty($request->attribute_name))
-        {
-            foreach ($request->attribute_name as $key => $item)
-            {
-                $productVariant                          = new ProductVariant();
-                $productVariant->attribute_name          = $item;
+        if (!empty($request->attribute_name)) {
+            foreach ($request->attribute_name as $key => $item) {
+                $productVariant = new ProductVariant();
+                $productVariant->attribute_name = $item;
                 $productVariant->product_attribute_value = $request->product_attribute_value[$key];
                 $product->productVariants()->save($productVariant);
             }
         }
 
-        if (!empty($request->feature_name))
-        {
-            foreach ($request->feature_name as $feature)
-            {
-                $productFeature               = new ProductFeature();
+        if (!empty($request->feature_name)) {
+            foreach ($request->feature_name as $feature) {
+                $productFeature = new ProductFeature();
                 $productFeature->feature_name = $feature;
                 $product->productFeatures()->save($productFeature);
             }
@@ -308,7 +291,7 @@ class ProductController extends Controller
 
 
         return \Redirect()->back()->with([
-            'flash_message' => 'Product Successfully Modified'
+            'flash_message' => 'Product Successfully Modified',
         ]);
     }
 
@@ -316,12 +299,13 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        /**
+        /*
     	 * Remove the product , all its linked categories and delete the thumbnail
     	 */
         File::delete(public_path().$product->thumbnail);
         CategoryProduct::whereProduct_id($id)->delete();
         $product->delete();
+
         return \Redirect::back();
     }
 
@@ -330,18 +314,21 @@ class ProductController extends Controller
         $photo = AlbumPhoto::find($photo_id);
         File::delete(public_path().$photo->photo_src);
         AlbumPhoto::destroy($photo_id);
+
         return \Redirect()->back();
     }
 
     public function deleteOption($id)
     {
         Option::destroy($id);
+
         return \Redirect()->back();
     }
 
     public function deleteOptionValue($id)
     {
         OptionValue::destroy($id);
+
         return \Redirect()->back();
     }
 
@@ -356,8 +343,9 @@ class ProductController extends Controller
         } else {
             $products = Product::where('name', 'like', '%'.$request->q.'%')->paginate(40);
         }
-        helperFunctions::getPageInfo($sections,$cart,$total);
+        helperFunctions::getPageInfo($sections, $cart, $total);
         $query = $request->q;
+
         return view('site.search', compact('sections', 'cart', 'total', 'products', 'query'));
     }
 }

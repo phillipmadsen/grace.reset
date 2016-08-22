@@ -2,12 +2,12 @@
 
 namespace App\Repositories\Page;
 
+use App\Exceptions\Validation\ValidationException;
 use App\Models\Page;
+use App\Repositories\CrudableInterface as CrudableInterface;
+use App\Repositories\RepositoryAbstract;
 use Config;
 use Response;
-use App\Repositories\RepositoryAbstract;
-use App\Repositories\CrudableInterface as CrudableInterface;
-use App\Exceptions\Validation\ValidationException;
 
 /**
  * Class PageRepository.
@@ -30,7 +30,7 @@ class PageRepository extends RepositoryAbstract implements PageInterface, Crudab
      * @var array
      */
     protected static $rules = [
-        'title' => 'required|min:3',
+        'title'   => 'required|min:3',
         'content' => 'required|min:5', ];
 
     /**
@@ -88,7 +88,7 @@ class PageRepository extends RepositoryAbstract implements PageInterface, Crudab
         $result->page = $page;
         $result->limit = $limit;
         $result->totalItems = 0;
-        $result->items = array();
+        $result->items = [];
 
         $query = $this->page->orderBy('created_at', 'DESC')->where('lang', $this->getLang());
 
@@ -117,9 +117,9 @@ class PageRepository extends RepositoryAbstract implements PageInterface, Crudab
     /**
      * @param $attributes
      *
-     * @return bool|mixed
-     *
      * @throws \App\Exceptions\Validation\ValidationException
+     *
+     * @return bool|mixed
      */
     public function create($attributes)
     {
@@ -139,9 +139,9 @@ class PageRepository extends RepositoryAbstract implements PageInterface, Crudab
      * @param $id
      * @param $attributes
      *
-     * @return bool|mixed
-     *
      * @throws \App\Exceptions\Validation\ValidationException
+     *
+     * @return bool|mixed
      */
     public function update($id, $attributes)
     {
@@ -180,7 +180,7 @@ class PageRepository extends RepositoryAbstract implements PageInterface, Crudab
         $page->is_published = ($page->is_published) ? false : true;
         $page->save();
 
-        return Response::json(array('result' => 'success', 'changed' => ($page->is_published) ? 1 : 0));
+        return Response::json(['result' => 'success', 'changed' => ($page->is_published) ? 1 : 0]);
     }
 
     /**

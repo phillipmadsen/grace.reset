@@ -1,15 +1,16 @@
 <?php
 
 /**
- * Laravel - A PHP Framework For Web Artisans
+ * Laravel - A PHP Framework For Web Artisans.
  *
- * @package  Language
  * @version  4.x
+ *
  * @author   Sinan Eldem <sinan@sinaneldem.com.tr>
+ *
  * @link     http://sinaneldem.com.tr
  */
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -22,12 +23,12 @@ return array(
     |
     */
 
-    "password" => "Şifreler altı karakter olmalı ve onay ile eşleşmelidir.",
+    'password' => 'Şifreler altı karakter olmalı ve onay ile eşleşmelidir.',
 
-    "user"     => "Bu e-mail adresi ile kayıtlı üye bulunamıyor.",
+    'user'     => 'Bu e-mail adresi ile kayıtlı üye bulunamıyor.',
 
-    "token"    => "Şifre sıfırlama bileti geçersiz.",
+    'token'    => 'Şifre sıfırlama bileti geçersiz.',
 
-    "sent"     => "Şifre sıfırlama başarı ile gönderildi!",
+    'sent'     => 'Şifre sıfırlama başarı ile gönderildi!',
 
-);
+];

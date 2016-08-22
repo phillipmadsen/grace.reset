@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $table = "messages";
-    protected $fillable = ['name','email','user_id','message','subject','opened'];
+    protected $table = 'messages';
+    protected $fillable = ['name', 'email', 'user_id', 'message', 'subject', 'opened'];
 
     public function user()
     {

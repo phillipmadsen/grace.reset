@@ -2,7 +2,6 @@
 
 namespace App\Composers;
 
- 
 use App\Repositories\Article\ArticleInterface;
 
 /**

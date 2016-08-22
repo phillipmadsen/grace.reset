@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Services\Pagination;
-use App\Repositories\Tag\TagInterface;
 use App\Repositories\Article\ArticleInterface;
-use App\Repositories\Tag\TagRepository as Tag;
-use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Article\ArticleRepository as Article;
+use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Category\CategoryRepository as Category;
+use App\Repositories\Tag\TagInterface;
+use App\Repositories\Tag\TagRepository as Tag;
+use App\Services\Pagination;
+use Illuminate\Http\Request;
 
 /**
  * Class CategoryController.

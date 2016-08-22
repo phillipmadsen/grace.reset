@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /* footer start */
     'newsletter'          => 'Newsletter',
@@ -21,4 +21,4 @@ return array(
 
     /*pagination start*/
     'link_previous'       => 'Previous',
-    'link_next'           => 'Next',/*pagination end*/);
+    'link_next'           => 'Next', /*pagination end*/];

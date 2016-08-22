@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /* footer start */
     'newsletter'          => '联系我们',
@@ -21,4 +21,4 @@ return array(
 
     /*pagination start*/
     'link_previous'       => '上一页',
-    'link_next'           => '下一页',/*pagination end*/);
+    'link_next'           => '下一页', /*pagination end*/];

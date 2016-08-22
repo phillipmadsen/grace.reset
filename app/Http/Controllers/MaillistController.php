@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use Flash;
-use Validator;
+use Illuminate\Http\Request;
 use Redirect;
+use Validator;
 
 /**
  * Class MaillistController.
@@ -25,6 +24,7 @@ class MaillistController extends Controller
 
     /**
      * @param Request $request
+     *
      * @return mixed
      */
     public function postMaillist(Request $request)
@@ -39,8 +39,7 @@ class MaillistController extends Controller
 
         $validation = Validator::make($formData, $rules);
 
-        if($validation->fails())
-        {
+        if ($validation->fails()) {
             return Redirect::action('MaillistController@getMaillist')->withErrors($validation)->withInput();
         }
 

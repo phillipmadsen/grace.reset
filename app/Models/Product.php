@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
+use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model implements SluggableInterface
 {
-
     use SluggableTrait;
 
     /**
@@ -23,14 +22,14 @@ class Product extends Model implements SluggableInterface
     protected $fillable = ['id', 'slug', 'ispromo', 'is_published', 'name', 'price', 'details', 'short',
         'description', 'sku', 'upc', 'status', 'thumbnail', 'photo_album', 'pubished_at', 'video_url', 'lang',
         'manufacturer', 'category_id', 'quantity', 'subtitle', 'meta_title', 'meta_description', 'facebook_title',
-        'google_plus_title', 'twitter_title', 'office_status', 'availability'];
+        'google_plus_title', 'twitter_title', 'office_status', 'availability', ];
 
     /**
      * @var array
      */
     protected $sluggable = [
         'build_from' => 'name',
-        'save_to'    => 'slug'
+        'save_to'    => 'slug',
     ];
 
     // public function setUrlAttribute($value)
@@ -70,10 +69,9 @@ class Product extends Model implements SluggableInterface
         'quantity'          => 'integer',
         'video_url'         => 'string',
         'thumbnail'         => 'string',
-        'photo_album'       => 'string'
+        'photo_album'       => 'string',
 
     ];
-
 
     /**
      * @return mixed
@@ -130,7 +128,7 @@ class Product extends Model implements SluggableInterface
     {
         return $this->hasMany(ProductFeature::class);
     }
-    
+
     public function variants()
     {
         return $this->hasMany(ProductVariant::class);

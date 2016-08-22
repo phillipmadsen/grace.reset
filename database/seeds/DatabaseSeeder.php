@@ -1,16 +1,14 @@
 <?php
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder {
-
+class DatabaseSeeder extends Seeder
+{
     /**
      * Run the database seeds.
      */
-    public function run() {
-
-
+    public function run()
+    {
         $this->call('ArticlesTableSeeder');
         $this->command->comment('Articles seeded Successfully');
         $this->call('MenusTableSeeder');
@@ -35,7 +33,5 @@ class DatabaseSeeder extends Seeder {
         $this->command->comment('Categories seeded Successfully');
         $this->call('ArticlesTagsTableSeeder');
         $this->command->comment('ArticlesTagsTable seeded Successfully');
-
     }
-
 }
