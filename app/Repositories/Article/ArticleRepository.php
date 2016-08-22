@@ -2,18 +2,18 @@
 
 namespace App\Repositories\Article;
 
-use App\Models\Article;
-use Config;
-use Response;
-use App\Models\Tag;
-use App\Models\Category;
-use Str;
-use Event;
-use Image;
-use File;
-use App\Repositories\RepositoryAbstract;
-use App\Repositories\CrudableInterface as CrudableInterface;
 use App\Exceptions\Validation\ValidationException;
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\Tag;
+use App\Repositories\CrudableInterface as CrudableInterface;
+use App\Repositories\RepositoryAbstract;
+use Config;
+use Event;
+use File;
+use Image;
+use Response;
+use Str;
 
 /**
  * Class ArticleRepository.
@@ -35,7 +35,7 @@ class ArticleRepository extends RepositoryAbstract implements ArticleInterface, 
      * @var array
      */
     protected static $rules = [
-        'title' => 'required',
+        'title'   => 'required',
         'content' => 'required',
     ];
 
@@ -108,7 +108,7 @@ class ArticleRepository extends RepositoryAbstract implements ArticleInterface, 
         $result->page = $page;
         $result->limit = $limit;
         $result->totalItems = 0;
-        $result->items = array();
+        $result->items = [];
 
         $query = $this->article->with('tags')->orderBy('created_at', 'DESC')->where('lang', $this->getLang());
 
@@ -147,9 +147,9 @@ class ArticleRepository extends RepositoryAbstract implements ArticleInterface, 
     /**
      * @param $attributes
      *
-     * @return bool|mixed
-     *
      * @throws \App\Exceptions\Validation\ValidationException
+     *
+     * @return bool|mixed
      */
     public function create($attributes)
     {
@@ -228,9 +228,9 @@ class ArticleRepository extends RepositoryAbstract implements ArticleInterface, 
      * @param $id
      * @param $attributes
      *
-     * @return bool|mixed
-     *
      * @throws \App\Exceptions\Validation\ValidationException
+     *
+     * @return bool|mixed
      */
     public function update($id, $attributes)
     {
@@ -324,7 +324,7 @@ class ArticleRepository extends RepositoryAbstract implements ArticleInterface, 
         $article->is_published = ($article->is_published) ? false : true;
         $article->save();
 
-        return Response::json(array('result' => 'success', 'changed' => ($article->is_published) ? 1 : 0));
+        return Response::json(['result' => 'success', 'changed' => ($article->is_published) ? 1 : 0]);
     }
 
     /**
@@ -336,7 +336,7 @@ class ArticleRepository extends RepositoryAbstract implements ArticleInterface, 
     {
         $article = $this->article->findOrFail($id);
 
-        return url('article/'.$id.'/'.$article->slug, $parameters = array(), $secure = null);
+        return url('article/'.$id.'/'.$article->slug, $parameters = [], $secure = null);
     }
 
     /**

@@ -10,8 +10,7 @@ class CreateEcommerceTables extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table)
-        {
+        Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('status')->nullable();
             $table->string('office_status')->nullable();
@@ -50,8 +49,7 @@ class CreateEcommerceTables extends Migration
             $table->engine = 'InnoDB';
         });
 
-        Schema::create('sections', function (Blueprint $table)
-        {
+        Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->text('meta_description')->nullable();
@@ -62,11 +60,10 @@ class CreateEcommerceTables extends Migration
             $table->engine = 'InnoDB';
         });
 
-        Schema::create('categories', function (Blueprint $table)
-        {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-             $table->unsignedInteger('section_id');
+            $table->unsignedInteger('section_id');
            // $table->string('name')->nullable();
             $table->text('meta_description')->nullable();
             $table->string('slug')->nullable();
@@ -75,11 +72,9 @@ class CreateEcommerceTables extends Migration
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->foreign('section_id')->references('id')->on('sections')->onUpdate('cascade')->onDelete('cascade');
-
         });
 
-        Schema::create('product_variants', function (Blueprint $table)
-        {
+        Schema::create('product_variants', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->unsigned()->index();
             $table->string('attribute_name');
@@ -89,8 +84,7 @@ class CreateEcommerceTables extends Migration
             $table->engine = 'InnoDB';
         });
 
-        Schema::create('product_features', function (Blueprint $table)
-        {
+        Schema::create('product_features', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->unsigned()->index();
             $table->string('feature_name');
@@ -101,8 +95,7 @@ class CreateEcommerceTables extends Migration
             $table->engine = 'InnoDB';
         });
 
-        Schema::create('options', function (Blueprint $table)
-        {
+        Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('product_id');
             $table->string('name');
@@ -112,8 +105,7 @@ class CreateEcommerceTables extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
         });
 
-        Schema::create('option_values', function (Blueprint $table)
-        {
+        Schema::create('option_values', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('option_id');
             $table->string('value');
@@ -123,8 +115,7 @@ class CreateEcommerceTables extends Migration
             $table->foreign('option_id')->references('id')->on('options')->onUpdate('cascade')->onDelete('cascade');
         });
 
-        Schema::create('sub_categories', function (Blueprint $table)
-        {
+        Schema::create('sub_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('parent_id');
             $table->string('name');
@@ -133,11 +124,9 @@ class CreateEcommerceTables extends Migration
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->foreign('parent_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
-
         });
 
-        Schema::create('category_product', function (Blueprint $table)
-        {
+        Schema::create('category_product', function (Blueprint $table) {
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('product_id');
             $table->timestamps();
@@ -146,13 +135,9 @@ class CreateEcommerceTables extends Migration
             $table->primary(['category_id', 'product_id']);
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
-
-
-
         });
 
-        Schema::create('product_album', function (Blueprint $table)
-        {
+        Schema::create('product_album', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('product_id');
             $table->string('photo_src');
@@ -160,11 +145,9 @@ class CreateEcommerceTables extends Migration
             $table->engine = 'InnoDB';
 
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
-
         });
 
-        Schema::create('reviews', function (Blueprint $table)
-        {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id');
             $table->string('name');
@@ -174,7 +157,6 @@ class CreateEcommerceTables extends Migration
             $table->timestamps();
             $table->engine = 'InnoDB';
         });
-
     }
 
     /**
@@ -194,6 +176,5 @@ class CreateEcommerceTables extends Migration
         Schema::drop('category_product');
         Schema::drop('product_album');
         Schema::drop('reviews');
-
     }
 }

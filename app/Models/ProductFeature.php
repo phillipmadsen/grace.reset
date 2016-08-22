@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -26,7 +27,7 @@ class ProductFeature extends Model
         'useicon',
         'icon',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     /**
@@ -35,6 +36,6 @@ class ProductFeature extends Model
     protected $casts = [
         'feature_name' => 'string',
         'useicon'      => 'boolean',
-        'icon'         => 'string'
+        'icon'         => 'string',
     ];
 }

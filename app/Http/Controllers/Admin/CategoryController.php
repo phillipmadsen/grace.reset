@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use View;
-use Input;
-use Flash;
-use App\Services\Pagination;
+use App\Exceptions\Validation\ValidationException;
 use App\Http\Controllers\Controller;
 use App\Repositories\Category\CategoryInterface;
-use App\Exceptions\Validation\ValidationException;
 use App\Repositories\Category\CategoryRepository as Category;
+use App\Services\Pagination;
+use Flash;
+use Input;
+use View;
 
 /**
  * Class CategoryController.

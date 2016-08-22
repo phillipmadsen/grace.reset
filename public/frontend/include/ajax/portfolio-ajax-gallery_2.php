@@ -1,8 +1,8 @@
 <?php
 
-$nextid = isset( $_POST['portnext'] ) ? $_POST['portnext'] : '';
-$previd = isset( $_POST['portprev'] ) ? $_POST['portprev'] : '';
-$postid = isset( $_POST['portid'] ) ? $_POST['portid'] : '';
+$nextid = isset($_POST['portnext']) ? $_POST['portnext'] : '';
+$previd = isset($_POST['portprev']) ? $_POST['portprev'] : '';
+$postid = isset($_POST['portid']) ? $_POST['portid'] : '';
 
 ?>
 
@@ -11,8 +11,12 @@ $postid = isset( $_POST['portid'] ) ? $_POST['portid'] : '';
     <div id="portfolio-ajax-title" style="position: relative;">
         <h2>Single Item with Thumbs</h2>
         <div id="portfolio-navigation">
-            <?php if( $previd ){ ?><a href="#" id="prev-portfolio" data-id="<?php echo $previd; ?>"><i class="icon-angle-left"></i></a><?php } ?>
-            <?php if( $nextid ){ ?><a href="#" id="next-portfolio" data-id="<?php echo $nextid; ?>"><i class="icon-angle-right"></i></a><?php } ?>
+            <?php if ($previd) {
+    ?><a href="#" id="prev-portfolio" data-id="<?php echo $previd; ?>"><i class="icon-angle-left"></i></a><?php 
+} ?>
+            <?php if ($nextid) {
+    ?><a href="#" id="next-portfolio" data-id="<?php echo $nextid; ?>"><i class="icon-angle-right"></i></a><?php 
+} ?>
             <a href="#" id="close-portfolio"><i class="icon-line-cross"></i></a>
         </div>
     </div>

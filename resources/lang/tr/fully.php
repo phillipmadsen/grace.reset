@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /* footer start */
     'newsletter'          => 'Bülten',
@@ -20,7 +20,7 @@ return array(
     /* contact page end */
 
     /*pagination start*/
-    'link_previous' =>'Geri',
-    'link_next' =>'İleri',
+    'link_previous' => 'Geri',
+    'link_next'     => 'İleri',
     /*pagination end*/
-);
+];

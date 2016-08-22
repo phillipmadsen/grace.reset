@@ -12,5 +12,5 @@ use Illuminate\Database\Eloquent\Model;
 class Faq extends Model
 {
     public $table = 'faqs';
-    protected $fillable = array('question', 'answer');
+    protected $fillable = ['question', 'answer'];
 }

@@ -11,7 +11,6 @@ class CreateFormPostsTable extends Migration
     public function up()
     {
         Schema::create('form_posts', function (Blueprint $table) {
-
             $table->increments('id');
             $table->string('sender_name_surname', 255);
             $table->string('sender_email', 255);

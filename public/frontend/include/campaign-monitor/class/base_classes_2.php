@@ -13,33 +13,36 @@ define('CS_REST_WEBHOOK_FORMAT_XML', 'xml');
 
 /**
  * A general result object returned from all Campaign Monitor API calls.
- * @author tobyb
  *
+ * @author tobyb
  */
-class CS_REST_Wrapper_Result {
-    /**
+class CS_REST_Wrapper_Result
+{
+    /*
      * The deserialised result of the API call
      * @var mixed
      */
-    var $response;
-    
-    /**
+    public $response;
+
+    /*
      * The http status code of the API call
      * @var int
      */
-    var $http_status_code;
-    
-    function CS_REST_Wrapper_Result($response, $code) {
+    public $http_status_code;
+
+    public function CS_REST_Wrapper_Result($response, $code)
+    {
         $this->response = $response;
         $this->http_status_code = $code;
     }
 
     /**
      * Can be used to check if a call to the api resulted in a successful response.
-     * @return boolean False if the call failed. Check the response property for the failure reason.
-     * @access public
+     *
+     * @return bool False if the call failed. Check the response property for the failure reason.
      */
-    function was_successful() {
+    public function was_successful()
+    {
         return $this->http_status_code >= 200 && $this->http_status_code < 300;
     }
 }
@@ -47,48 +50,49 @@ class CS_REST_Wrapper_Result {
 /**
  * Base class for the create send PHP wrapper.
  * This class includes functions to access the general data,
- * i.e timezones, clients and getting your API Key from username and password
- * @author tobyb
+ * i.e timezones, clients and getting your API Key from username and password.
  *
+ * @author tobyb
  */
-class CS_REST_Wrapper_Base {
-    /**
+class CS_REST_Wrapper_Base
+{
+    /*
      * The protocol to use while accessing the api
      * @var string http or https
      * @access private
      */
-    var $_protocol;
+    public $_protocol;
 
-    /**
+    /*
      * The base route of the create send api.
      * @var string
      * @access private
      */
-    var $_base_route;
+    public $_base_route;
 
-    /**
+    /*
      * The serialiser to use for serialisation and deserialisation
      * of API request and response data
      * @var CS_REST_JsonSerialiser or CS_REST_XmlSerialiser
      * @access private
      */
-    var $_serialiser;
+    public $_serialiser;
 
-    /**
+    /*
      * The transport to use to send API requests
      * @var CS_REST_CurlTransport or CS_REST_SocketTransport or your own custom transport.
      * @access private
      */
-    var $_transport;
+    public $_transport;
 
-    /**
+    /*
      * The logger to use for debugging of all API requests
      * @var CS_REST_Log
      * @access private
      */
-    var $_log;
+    public $_log;
 
-    /**
+    /*
      * The default options to use for each API request.
      * These can be overridden by passing in an array as the call_options argument
      * to a single api request.
@@ -102,10 +106,11 @@ class CS_REST_Wrapper_Base {
      * @var array
      * @access private
      */
-    var $_default_call_options;
+    public $_default_call_options;
 
     /**
      * Constructor.
+     *
      * @param $auth_details array Authentication details to use for API calls.
      *        This array must take one of the following forms:
      *        If using OAuth to authenticate:
@@ -125,20 +130,19 @@ class CS_REST_Wrapper_Base {
      * @param $log CS_REST_Log The logger to use. Used for dependency injection
      * @param $serialiser The serialiser to use. Used for dependency injection
      * @param $transport The transport to use. Used for dependency injection
-     * @access public
      */
-    function CS_REST_Wrapper_Base(
+    public function CS_REST_Wrapper_Base(
         $auth_details,
         $protocol = 'https',
         $debug_level = CS_REST_LOG_NONE,
         $host = CS_HOST,
-        $log = NULL,
-        $serialiser = NULL,
-        $transport = NULL) {
-
+        $log = null,
+        $serialiser = null,
+        $transport = null)
+    {
         if (is_string($auth_details)) {
-            # If $auth_details is a string, assume it is an API key
-            $auth_details = array('api_key' => $auth_details);
+            // If $auth_details is a string, assume it is an API key
+            $auth_details = ['api_key' => $auth_details];
         }
 
         $this->_log = is_null($log) ? new CS_REST_Log($debug_level) : $log;
@@ -160,128 +164,137 @@ class CS_REST_Wrapper_Base {
 
         $this->_log->log_message('Using '.$this->_serialiser->get_type().' json serialising', get_class($this), CS_REST_LOG_WARNING);
 
-        $this->_default_call_options = array (
+        $this->_default_call_options =  [
             'authdetails' => $auth_details,
-            'userAgent' => 'CS_REST_Wrapper v'.CS_REST_WRAPPER_VERSION.
+            'userAgent'   => 'CS_REST_Wrapper v'.CS_REST_WRAPPER_VERSION.
                 ' PHPv'.phpversion().' over '.$transport_type.' with '.$this->_serialiser->get_type(),
-            'contentType' => 'application/json; charset=utf-8', 
+            'contentType' => 'application/json; charset=utf-8',
             'deserialise' => true,
-            'host' => $host,
-            'protocol' => $protocol
-        );
+            'host'        => $host,
+            'protocol'    => $protocol,
+        ];
     }
 
     /**
      * Refresh the current OAuth token using the current refresh token.
-     * @access public
      */
-    function refresh_token() {
+    public function refresh_token()
+    {
         if (!isset($this->_default_call_options['authdetails']) ||
             !isset($this->_default_call_options['authdetails']['refresh_token'])) {
             trigger_error(
                 'Error refreshing token. There is no refresh token set on this object.',
                 E_USER_ERROR);
-            return array(NULL, NULL, NULL);
+
+            return [null, null, null];
         }
-        $body = "grant_type=refresh_token&refresh_token=".urlencode(
+        $body = 'grant_type=refresh_token&refresh_token='.urlencode(
             $this->_default_call_options['authdetails']['refresh_token']);
-        $options = array('contentType' => 'application/x-www-form-urlencoded');
-        $wrap = new CS_REST_Wrapper_Base(
-            NULL, 'https', CS_REST_LOG_NONE, CS_HOST, NULL,
-            new CS_REST_DoNothingSerialiser(), NULL);
+        $options = ['contentType' => 'application/x-www-form-urlencoded'];
+        $wrap = new self(
+            null, 'https', CS_REST_LOG_NONE, CS_HOST, null,
+            new CS_REST_DoNothingSerialiser(), null);
 
         $result = $wrap->post_request(CS_OAUTH_TOKEN_URI, $body, $options);
         if ($result->was_successful()) {
             $access_token = $result->response->access_token;
             $expires_in = $result->response->expires_in;
             $refresh_token = $result->response->refresh_token;
-            $this->_default_call_options['authdetails'] = array(
-                'access_token' => $access_token,
-                'refresh_token' => $refresh_token
-            );
-            return array($access_token, $expires_in, $refresh_token);
+            $this->_default_call_options['authdetails'] = [
+                'access_token'  => $access_token,
+                'refresh_token' => $refresh_token,
+            ];
+
+            return [$access_token, $expires_in, $refresh_token];
         } else {
             trigger_error(
                 'Error refreshing token. '.$result->response->error.': '.$result->response->error_description,
                 E_USER_ERROR);
-            return array(NULL, NULL, NULL);
+
+            return [null, null, null];
         }
     }
 
     /**
-     * @return boolean True if the wrapper is using SSL.
-     * @access public
+     * @return bool True if the wrapper is using SSL.
      */
-    function is_secure() {
+    public function is_secure()
+    {
         return $this->_protocol === 'https';
     }
-    
-    function put_request($route, $data, $call_options = array()) {
+
+    public function put_request($route, $data, $call_options = [])
+    {
         return $this->_call($call_options, CS_REST_PUT, $route, $data);
     }
-    
-    function post_request($route, $data, $call_options = array()) {
+
+    public function post_request($route, $data, $call_options = [])
+    {
         return $this->_call($call_options, CS_REST_POST, $route, $data);
     }
-    
-    function delete_request($route, $call_options = array()) {
+
+    public function delete_request($route, $call_options = [])
+    {
         return $this->_call($call_options, CS_REST_DELETE, $route);
     }
-    
-    function get_request($route, $call_options = array()) {
+
+    public function get_request($route, $call_options = [])
+    {
         return $this->_call($call_options, CS_REST_GET, $route);
     }
-    
-    function get_request_paged($route, $page_number, $page_size, $order_field, $order_direction,
-        $join_char = '&') {      
-        if(!is_null($page_number)) {
+
+    public function get_request_paged($route, $page_number, $page_size, $order_field, $order_direction,
+        $join_char = '&')
+    {
+        if (!is_null($page_number)) {
             $route .= $join_char.'page='.$page_number;
             $join_char = '&';
         }
-        
-        if(!is_null($page_size)) {
+
+        if (!is_null($page_size)) {
             $route .= $join_char.'pageSize='.$page_size;
             $join_char = '&';
         }
-        
-        if(!is_null($order_field)) {
+
+        if (!is_null($order_field)) {
             $route .= $join_char.'orderField='.$order_field;
             $join_char = '&';
         }
-        
-        if(!is_null($order_direction)) {
+
+        if (!is_null($order_direction)) {
             $route .= $join_char.'orderDirection='.$order_direction;
             $join_char = '&';
         }
-        
-        return $this->get_request($route);      
-    }       
+
+        return $this->get_request($route);
+    }
 
     /**
-     * Internal method to make a general API request based on the provided options
+     * Internal method to make a general API request based on the provided options.
+     *
      * @param $call_options
-     * @access private
      */
-    function _call($call_options, $method, $route, $data = NULL) {
+    public function _call($call_options, $method, $route, $data = null)
+    {
         $call_options['route'] = $route;
         $call_options['method'] = $method;
 
-        if(!is_null($data)) {
+        if (!is_null($data)) {
             $call_options['data'] = $this->_serialiser->serialise($data);
         }
-        
+
         $call_options = array_merge($this->_default_call_options, $call_options);
         $this->_log->log_message('Making '.$call_options['method'].' call to: '.$call_options['route'], get_class($this), CS_REST_LOG_WARNING);
-            
+
         $call_result = $this->_transport->make_call($call_options);
 
         $this->_log->log_message('Call result: <pre>'.var_export($call_result, true).'</pre>',
             get_class($this), CS_REST_LOG_VERBOSE);
 
-        if($call_options['deserialise']) {
+        if ($call_options['deserialise']) {
             $call_result['response'] = $this->_serialiser->deserialise($call_result['response']);
         }
-         
+
         return new CS_REST_Wrapper_Result($call_result['response'], $call_result['code']);
     }
 }

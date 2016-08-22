@@ -2,11 +2,11 @@
 
 namespace App\Repositories\Faq;
 
-use Config;
-use App\Models\Faq;
-use App\Repositories\RepositoryAbstract;
-use App\Repositories\CrudableInterface;
 use App\Exceptions\Validation\ValidationException;
+use App\Models\Faq;
+use App\Repositories\CrudableInterface;
+use App\Repositories\RepositoryAbstract;
+use Config;
 
 /**
  * Class FaqRepository.
@@ -30,7 +30,7 @@ class FaqRepository extends RepositoryAbstract implements FaqInterface, Crudable
      */
     protected static $rules = [
         'question' => 'required',
-        'answer' => 'required',
+        'answer'   => 'required',
     ];
 
     /**
@@ -66,7 +66,7 @@ class FaqRepository extends RepositoryAbstract implements FaqInterface, Crudable
         $result->page = $page;
         $result->limit = $limit;
         $result->totalItems = 0;
-        $result->items = array();
+        $result->items = [];
 
         $query = $this->faq->orderBy('created_at', 'DESC')->where('lang', $this->getLang());
 
@@ -91,9 +91,9 @@ class FaqRepository extends RepositoryAbstract implements FaqInterface, Crudable
     /**
      * @param $attributes
      *
-     * @return bool|mixed
-     *
      * @throws \App\Exceptions\Validation\ValidationException
+     *
+     * @return bool|mixed
      */
     public function create($attributes)
     {
@@ -111,9 +111,9 @@ class FaqRepository extends RepositoryAbstract implements FaqInterface, Crudable
      * @param $id
      * @param $attributes
      *
-     * @return bool|mixed
-     *
      * @throws \App\Exceptions\Validation\ValidationException
+     *
+     * @return bool|mixed
      */
     public function update($id, $attributes)
     {

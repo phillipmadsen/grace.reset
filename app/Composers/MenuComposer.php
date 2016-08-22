@@ -2,8 +2,8 @@
 
 namespace App\Composers;
 
-use Menu;
 use App\Repositories\Menu\MenuInterface;
+use Menu;
 
 /**
  * Class MenuComposer.

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use View;
-use App\Services\Pagination;
-use App\Repositories\Tag\TagInterface;
 use App\Repositories\Article\ArticleInterface;
-use App\Repositories\Tag\TagRepository as Tag;
 use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Category\CategoryRepository as Category;
+use App\Repositories\Tag\TagInterface;
+use App\Repositories\Tag\TagRepository as Tag;
+use App\Services\Pagination;
+use Illuminate\Http\Request;
+use View;
 
 /**
  * Class ArticleController.
@@ -53,6 +52,7 @@ class ArticleController extends Controller
 
     /**
      * @param $slug
+     *
      * @return View
      */
     public function show($slug)
@@ -64,7 +64,6 @@ class ArticleController extends Controller
         }
 
         View::composer('frontend/layout/layout', function ($view) use ($article) {
-
             $view->with('meta_keywords', $article->meta_keywords);
             $view->with('meta_description', $article->meta_description);
         });

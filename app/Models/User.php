@@ -11,9 +11,6 @@ use Cartalyst\Sentinel\Users\EloquentUser;
  */
 class User extends EloquentUser
 {
-    
-    
-    
     public function userInfo()
     {
         return $this->hasOne(UserInfo::class);

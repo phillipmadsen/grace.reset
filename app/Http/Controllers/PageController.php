@@ -31,7 +31,7 @@ class PageController extends Controller
         $page = $this->page->getBySlug($slug, true);
 
         if ($page === null) {
-            return Response::view('errors.missing', array(), 404);
+            return Response::view('errors.missing', [], 404);
         }
 
         return view('frontend.page.show', compact('page'));

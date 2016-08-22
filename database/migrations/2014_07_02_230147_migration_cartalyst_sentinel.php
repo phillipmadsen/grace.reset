@@ -10,14 +10,14 @@
  * This source file is subject to the 3-clause BSD License that is
  * bundled with this package in the LICENSE file.
  *
- * @package    Sentinel
  * @version    2.0.11
+ *
  * @author     Cartalyst LLC
  * @license    BSD License (3-clause)
  * @copyright  (c) 2011-2015, Cartalyst LLC
+ *
  * @link       http://cartalyst.com
  */
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -96,7 +96,7 @@ class MigrationCartalystSentinel extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('password');
-	$table->unsignedInteger('isAdmin')->default(0);
+            $table->unsignedInteger('isAdmin')->default(0);
             $table->rememberToken();
             $table->text('permissions')->nullable();
             $table->timestamp('last_login')->nullable();
@@ -105,7 +105,6 @@ class MigrationCartalystSentinel extends Migration
             $table->timestamps();
 
             $table->engine = 'InnoDB';
-
         });
     }
 

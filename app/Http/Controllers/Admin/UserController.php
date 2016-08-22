@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use View;
+use App\Http\Controllers\Controller;
+use App\Models\Role;
+use App\Models\User;
 use Flash;
+use Illuminate\Http\Request;
 use Redirect;
 use Sentinel;
 use Validator;
-use App\Models\User;
-use App\Models\Role;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use View;
 
 /**
  * Class UserController.
@@ -50,22 +50,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $formData = array(
-            'first-name' => $request->get('first_name'),
-            'last-name' => $request->get('last_name'),
-            'email' => $request->get('email'),
-            'password' => $request->get('password'),
+        $formData = [
+            'first-name'       => $request->get('first_name'),
+            'last-name'        => $request->get('last_name'),
+            'email'            => $request->get('email'),
+            'password'         => $request->get('password'),
             'confirm-password' => $request->get('confirm_password'),
-            'roles' => $request->get('roles'),
-        );
+            'roles'            => $request->get('roles'),
+        ];
 
-        $rules = array(
-            'first-name' => 'required|min:3',
-            'last-name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:4',
+        $rules = [
+            'first-name'       => 'required|min:3',
+            'last-name'        => 'required|min:3',
+            'email'            => 'required|email|unique:users,email',
+            'password'         => 'required|min:4',
             'confirm-password' => 'required|same:password',
-        );
+        ];
 
         $validation = Validator::make($formData, $rules);
 
@@ -73,13 +73,13 @@ class UserController extends Controller
             return Redirect::action('Admin\UserController@create')->withErrors($validation)->withInput();
         }
 
-        $user = Sentinel::registerAndActivate(array(
-            'email' => $formData['email'],
-            'password' => $formData['password'],
+        $user = Sentinel::registerAndActivate([
+            'email'      => $formData['email'],
+            'password'   => $formData['password'],
             'first_name' => $formData['first-name'],
-            'last_name' => $formData['last-name'],
-            'activated' => 1,
-        ));
+            'last_name'  => $formData['last-name'],
+            'activated'  => 1,
+        ]);
 
         if (isset($formData['roles'])) {
             foreach ($formData['roles'] as $role => $id) {
@@ -131,27 +131,27 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $formData = array(
-            'first-name' => $request->get('first_name'),
-            'last-name' => $request->get('last_name'),
-            'email' => $request->get('email'),
-            'password' => ($request->get('password')) ?: null,
+        $formData = [
+            'first-name'       => $request->get('first_name'),
+            'last-name'        => $request->get('last_name'),
+            'email'            => $request->get('email'),
+            'password'         => ($request->get('password')) ?: null,
             'confirm-password' => ($request->get('confirm_password')) ?: null,
-            'roles' => $request->get('roles'),
-        );
+            'roles'            => $request->get('roles'),
+        ];
 
         if (!$formData['password'] || !$formData['confirm-password']) {
             unset($formData['password']);
             unset($formData['confirm_password']);
         }
 
-        $rules = array(
-            'first-name' => 'required|min:3',
-            'last-name' => 'required|min:3',
-            'email' => 'required',
-            'password' => 'min:6',
+        $rules = [
+            'first-name'       => 'required|min:3',
+            'last-name'        => 'required|min:3',
+            'email'            => 'required',
+            'password'         => 'min:6',
             'confirm-password' => 'same:password',
-        );
+        ];
 
         $validation = Validator::make($formData, $rules);
 

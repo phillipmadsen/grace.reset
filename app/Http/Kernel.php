@@ -26,11 +26,11 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'before' => \App\Http\Middleware\BeforeMiddleware::class,
-        'sentinel.auth' => \App\Http\Middleware\SentinelAuth::class,
-        'sentinel.permission' => \App\Http\Middleware\SentinelPermission::class,
-        'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'before'               => \App\Http\Middleware\BeforeMiddleware::class,
+        'sentinel.auth'        => \App\Http\Middleware\SentinelAuth::class,
+        'sentinel.permission'  => \App\Http\Middleware\SentinelPermission::class,
+        'localize'             => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
         'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
-        'isAdmin' => \App\Http\Middleware\isAdmin::class,
+        'isAdmin'              => \App\Http\Middleware\isAdmin::class,
     ];
 }

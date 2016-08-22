@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use URL;
-use Illuminate\Database\Eloquent\Model;
 use App\Repositories\Page\PageRepository;
 use App\Repositories\PhotoGallery\PhotoGalleryRepository;
+use Illuminate\Database\Eloquent\Model;
+use URL;
 
 /**
  * Class Menu.
@@ -60,16 +60,16 @@ class Menu extends Model
 
     public function parseJsonArray($jsonArray, $parentID = 0)
     {
-        $return = array();
+        $return = [];
 
         foreach ($jsonArray as $subArray) {
-            $returnSubArray = array();
+            $returnSubArray = [];
 
             if (isset($subArray['children'])) {
                 $returnSubArray = $this->parseJsonArray($subArray['children'], $subArray['id']);
             }
 
-            $return[] = array('id' => $subArray['id'], 'parentID' => $parentID);
+            $return[] = ['id' => $subArray['id'], 'parentID' => $parentID];
             $return = array_merge($return, $returnSubArray);
         }
 
@@ -98,7 +98,7 @@ class Menu extends Model
 
     public function getMenuOptions()
     {
-        $opts = array();
+        $opts = [];
         $page = new PageRepository(new Page());
         $pageOpts = $page->lists();
 
@@ -113,16 +113,16 @@ class Menu extends Model
             $opts['PhotoGallery']['App\Models\PhotoGallery-'.$k] = $v;
         }
 
-        $menuOptions = array(
-            'General' => array(
-                'home' => 'Home',
-                'news' => 'News',
-                'blog' => 'Blog',
+        $menuOptions = [
+            'General' => [
+                'home'    => 'Home',
+                'news'    => 'News',
+                'blog'    => 'Blog',
                 'project' => 'Project',
-                'faq' => 'Faq',
-                'contact' => 'Contact', ),
-            'Page' => (isset($opts['Page']) ? $opts['Page'] : array()),
-            'Photo Gallery' => (isset($opts['PhotoGallery']) ? $opts['PhotoGallery'] : array()), );
+                'faq'     => 'Faq',
+                'contact' => 'Contact', ],
+            'Page'          => (isset($opts['Page']) ? $opts['Page'] : []),
+            'Photo Gallery' => (isset($opts['PhotoGallery']) ? $opts['PhotoGallery'] : []), ];
 
         return $menuOptions;
     }

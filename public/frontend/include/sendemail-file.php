@@ -1,64 +1,59 @@
 <?php
 
-require_once('phpmailer/class.phpmailer.php');
+require_once 'phpmailer/class.phpmailer.php';
 
 $mail = new PHPMailer();
 
-if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
-	if( $_POST['template-contactform-name'] != '' AND $_POST['template-contactform-email'] != '' AND $_POST['template-contactform-message'] != '' ) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_POST['template-contactform-name'] != '' and $_POST['template-contactform-email'] != '' and $_POST['template-contactform-message'] != '') {
+        $name = $_POST['template-contactform-name'];
+        $email = $_POST['template-contactform-email'];
+        $phone = $_POST['template-contactform-phone'];
+        $service = $_POST['template-contactform-service'];
+        $subject = $_POST['template-contactform-subject'];
+        $message = $_POST['template-contactform-message'];
 
-		$name = $_POST['template-contactform-name'];
-		$email = $_POST['template-contactform-email'];
-		$phone = $_POST['template-contactform-phone'];
-		$service = $_POST['template-contactform-service'];
-		$subject = $_POST['template-contactform-subject'];
-		$message = $_POST['template-contactform-message'];
+        $subject = isset($subject) ? $subject : 'New Message From Contact Form';
 
-		$subject = isset($subject) ? $subject : 'New Message From Contact Form';
+        $botcheck = $_POST['template-contactform-botcheck'];
 
-		$botcheck = $_POST['template-contactform-botcheck'];
+        $toemail = ''; // Your Email Address
+        $toname = ''; // Your Name
 
-		$toemail = ''; // Your Email Address
-		$toname = ''; // Your Name
+        if ($botcheck == '') {
+            $mail->SetFrom($email, $name);
+            $mail->AddReplyTo($email, $name);
+            $mail->AddAddress($toemail, $toname);
+            $mail->Subject = $subject;
 
-		if( $botcheck == '' ) {
+            $name = isset($name) ? "Name: $name<br><br>" : '';
+            $email = isset($email) ? "Email: $email<br><br>" : '';
+            $phone = isset($phone) ? "Phone: $phone<br><br>" : '';
+            $service = isset($service) ? "Service: $service<br><br>" : '';
+            $message = isset($message) ? "Message: $message<br><br>" : '';
 
-			$mail->SetFrom( $email , $name );
-			$mail->AddReplyTo( $email , $name );
-			$mail->AddAddress( $toemail , $toname );
-			$mail->Subject = $subject;
+            $referrer = $_SERVER['HTTP_REFERER'] ? '<br><br><br>This Form was submitted from: '.$_SERVER['HTTP_REFERER'] : '';
 
-			$name = isset($name) ? "Name: $name<br><br>" : '';
-			$email = isset($email) ? "Email: $email<br><br>" : '';
-			$phone = isset($phone) ? "Phone: $phone<br><br>" : '';
-			$service = isset($service) ? "Service: $service<br><br>" : '';
-			$message = isset($message) ? "Message: $message<br><br>" : '';
+            $body = "$name $email $phone $service $message $referrer";
 
-			$referrer = $_SERVER['HTTP_REFERER'] ? '<br><br><br>This Form was submitted from: ' . $_SERVER['HTTP_REFERER'] : '';
+            if (isset($_FILES['template-contactform-cvfile']) && $_FILES['template-contactform-cvfile']['error'] == UPLOAD_ERR_OK) {
+                $mail->IsHTML(true);
+                $mail->AddAttachment($_FILES['template-contactform-cvfile']['tmp_name'], $_FILES['template-contactform-cvfile']['name']);
+            }
 
-			$body = "$name $email $phone $service $message $referrer";
+            $mail->MsgHTML($body);
+            $sendEmail = $mail->Send();
 
-			if ( isset( $_FILES['template-contactform-cvfile'] ) && $_FILES['template-contactform-cvfile']['error'] == UPLOAD_ERR_OK ) {
-				$mail->IsHTML(true);
-				$mail->AddAttachment( $_FILES['template-contactform-cvfile']['tmp_name'], $_FILES['template-contactform-cvfile']['name'] );
-			}
-
-			$mail->MsgHTML( $body );
-			$sendEmail = $mail->Send();
-
-			if( $sendEmail == true ):
-				echo 'We have <strong>successfully</strong> received your Message and will get Back to you as soon as possible.';
-			else:
-				echo 'Email <strong>could not</strong> be sent due to some Unexpected Error. Please Try Again later.<br /><br /><strong>Reason:</strong><br />' . $mail->ErrorInfo . '';
-			endif;
-		} else {
-			echo 'Bot <strong>Detected</strong>.! Clean yourself Botster.!';
-		}
-	} else {
-		echo 'Please <strong>Fill up</strong> all the Fields and Try Again.';
-	}
+            if ($sendEmail == true):
+                echo 'We have <strong>successfully</strong> received your Message and will get Back to you as soon as possible.'; else:
+                echo 'Email <strong>could not</strong> be sent due to some Unexpected Error. Please Try Again later.<br /><br /><strong>Reason:</strong><br />'.$mail->ErrorInfo.'';
+            endif;
+        } else {
+            echo 'Bot <strong>Detected</strong>.! Clean yourself Botster.!';
+        }
+    } else {
+        echo 'Please <strong>Fill up</strong> all the Fields and Try Again.';
+    }
 } else {
-	echo 'An <strong>unexpected error</strong> occured. Please Try Again later.';
+    echo 'An <strong>unexpected error</strong> occured. Please Try Again later.';
 }
-
-?>

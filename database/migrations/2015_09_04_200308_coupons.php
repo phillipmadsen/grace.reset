@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Coupons extends Migration
 {
@@ -20,8 +20,7 @@ class Coupons extends Migration
             $table->timestamps();
         });
 
-        Schema::table('orders', function($table)
-        {
+        Schema::table('orders', function ($table) {
             $table->unsignedInteger('coupon_id')->nullable();
 
             $table->foreign('coupon_id')->references('id')->on('coupons');
@@ -35,13 +34,11 @@ class Coupons extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function($table)
-        {
+        Schema::table('orders', function ($table) {
             $table->dropForeign('orders_coupon_id_foreign');
             $table->dropColumn('coupon_id');
         });
 
         Schema::drop('coupons');
-
     }
 }

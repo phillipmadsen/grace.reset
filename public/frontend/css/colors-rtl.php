@@ -1,41 +1,37 @@
 <?php
 
-header ("Content-Type:text/css");
+header('Content-Type:text/css');
 
-/** ===============================================================
+/* ===============================================================
  *
  *      Edit your Color Configurations below:
  *      You should only enter 6-Digits HEX Colors.
  *
  ================================================================== */
 
-$color = "#1ABC9C"; // Change your Color Here
+$color = '#1ABC9C'; // Change your Color Here
 
 /** ===============================================================
- *
  *      Do not Edit anything below this line if you do not know
  *      what you are trying to do..!
- *
  ================================================================== */
-
-function checkhexcolor($color) {
-
+function checkhexcolor($color)
+{
     return preg_match('/^#[a-f0-9]{6}$/i', $color);
-
 }
 
-/** ===============================================================
+/* ===============================================================
  *
  *      Primary Color Scheme
  *
  ================================================================== */
 
-if( isset( $_GET[ 'color' ] ) AND $_GET[ 'color' ] != '' ) {
-    $color = "#" . $_GET[ 'color' ];
+if (isset($_GET['color']) and $_GET['color'] != '') {
+    $color = '#'.$_GET['color'];
 }
 
-if( !$color OR !checkhexcolor( $color ) ) {
-    $color = "#1ABC9C";
+if (!$color or !checkhexcolor($color)) {
+    $color = '#1ABC9C';
 }
 
 ?>

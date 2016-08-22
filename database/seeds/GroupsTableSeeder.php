@@ -13,7 +13,7 @@ class GroupsTableSeeder extends Seeder
 
         DB::table('groups')->insert([
             [
-                'name' => 'Admin',
+                'name'        => 'Admin',
                 'permissions' => '{
                           "admin": 1,
                           "admin.dashboard": 1,
